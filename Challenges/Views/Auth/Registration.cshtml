@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    @if (ViewBag.errCode != 0)
+    {
+        <p>Аккаунт с таким-же логином уже существует</p>
+    }
+    <form method="get" action="/Auth/Registrate">
+        <input type="text" name="login" />
+        <input type="text" name="password" />
+        <input type="submit" value="Зарегистрироваться" />
+    </form>
+</body>
+</html>
