@@ -1,34 +1,36 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .input_box {
-            width: 100%;
-        }
-    </style>
+﻿@if (ViewBag.errCode != 0)
+{
+    <p>Пользователь с таким-же логином уже существует</p>
+}
 
-    <title></title>
-</head>
-<body>
-    @if (ViewBag.errCode != 0)
-    {
-        <p>Аккаунт с таким-же логином уже существует</p>
+<style>
+    .input_box {
+        min-width: 100%;
+        width: 100%;
     }
-    <form method="get" action="/Auth/Registrate">
-        <table>
-            <tr>
-                <td>Логин</td>
-                <td><input type="text" name="login" class="input_box"/></td>
-            </tr>
-            <tr>
-                <td>Пароль</td>
-                <td><input type="text" name="password" class="input_box"/></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Зарегистрироваться" class="input_box"/></td>
-            </tr>
-        </table>
-    </form>
-    <a href="/Auth/Authorization">Уже есть аккаунт? Авторизоваться</a>
-</body>
-</html>
+
+    .boty_table {
+        width: 100%;
+    }
+</style>
+
+<form method="get" action="/Auth/Registrate" class="boty_table">
+    <table class="boty_table">
+        <tr>
+            <td style="max-width: 15px; width: 10px;">Логин</td>
+            <td><input type="text" name="login" class="input_box" /></td>
+        </tr>
+        <tr>
+            <td>Пароль</td>
+            <td><input type="text" name="password" class="input_box" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Зарегестрироваться" class="input_box" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <a href="/Auth/Authorization">Уже есть аккаунт? Авторизоваться</a>
+            </td>
+        </tr>
+    </table>
+</form>

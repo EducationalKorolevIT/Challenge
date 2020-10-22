@@ -5,14 +5,19 @@
 
 <style>
     .input_box {
+        min-width: 100%;
+        width: 100%;
+    }
 
+    .boty_table {
+        width: 100%;
     }
 </style>
 
-<form method="get" action="/Auth/Authorize">
-    <table>
+<form method="get" action="/Auth/Authorize" class="boty_table">
+    <table class="boty_table">
         <tr>
-            <td>Логин</td>
+            <td style="max-width: 15px; width: 10px;">Логин</td>
             <td><input type="text" name="login" class="input_box"/></td>
         </tr>
         <tr>
@@ -22,6 +27,10 @@
         <tr>
             <td colspan="2"><input type="submit" value="Авторизоваться" class="input_box"/></td>
         </tr>
+        <tr>
+            <td colspan="2">
+                <a href="/Auth/Registration">Еще нет аккаунта? Зарегестрироваться</a>
+            </td>
+        </tr>
     </table>
 </form>
-<a href="/Auth/Registration">Еще нет аккаунта? Зарегестрироваться</a>

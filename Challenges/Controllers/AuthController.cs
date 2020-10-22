@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 
 namespace Challenges.Controllers
 {
     public class AuthController : Controller
     {
-        // GET: Auth
         public ActionResult Registration(int errCode = 0)
         {
             ViewBag.UserNickname = Session["userNickname"] ?? "no";
@@ -21,6 +21,11 @@ namespace Challenges.Controllers
         {
             ViewBag.UserNickname = Session["userNickname"] ?? "no";
             ViewBag.errCode = errCode;
+            return View();
+        }
+
+        public ActionResult Profile()
+        {
             return View();
         }
 
