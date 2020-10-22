@@ -11,23 +11,16 @@ namespace Challenges.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.UserNickname = Session["userNickname"] ?? "no";
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.UserNickname = Session["userNickname"] ?? "no";
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.UserNickname = Session["userNickname"] ?? "no";
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

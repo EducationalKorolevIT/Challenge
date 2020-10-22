@@ -1,44 +1,59 @@
 ﻿<!DOCTYPE html>
+
+@{ 
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users { Nickname = "no" };
+    if (user.Nickname == null) { user.Nickname = user.Login; }
+    ViewBag.User = user;
+    ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
+}
+
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - приложение ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <title>
+        Challenge
+    </title>
+    <link rel="stylesheet" href="~/Content/style.css"/>
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Авторизация", "Authorization", "Auth")</li>
-                    <li>@Html.ActionLink("Связаться", "Contact", "Home")</li>
-                    <li><p style="color: lightgray">@ViewBag.UserNickname</p></li>
-                </ul>
-            </div>
+    <div class="menu">
+        <h1 class="logo">Logo</h1>
+        <nav class="nav">
+            <a class="nav_link" href="#main">Главная</a>
+            <a class="nav_link" href="#rivals">Соперники</a>
+            <a class="nav_link" href="#search">Поиск</a>
+            <a class="nav_link" href="#notifications">Уведомления</a>
+            <a class="nav_link" href="#messanges">Сообщения</a>
+            <a class="nav_link" href="#save">Сохранённое</a>
+            @if (ViewBag.IsAuthorized)
+            {
+                <a class="nav_link" href="#profile">@ViewBag.User.Nickname</a>
+            }
+            else
+            {
+                <a class="nav_link" href="/Auth/Authorize">Войти</a>
+            }
+            <a class="nav_link" href="#customization">Настройки</a>
+        </nav>
+
+        <div class="button">
+            <a class="btn btn-oval" href="#button_action">-</a>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
-        </footer>
+    @RenderBody()
+    <div class="topics">
+        <h2 class="topics_title">Актуальные темы</h2>
+        <nav class="topics_nav">
+            <a class="topics_link" href="#topics_link">Здесь</a>
+            <a class="topics_link" href="#topics_link">Будут</a>
+            <a class="topics_link" href="#topics_link">Расположены</a>
+            <a class="topics_link" href="#topics_link">Актуальные</a>
+            <a class="topics_link" href="#topics_link">Темы</a>
+            <a class="topics_link" href="#topics_link">Челленджей</a>
+        </nav>
     </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>

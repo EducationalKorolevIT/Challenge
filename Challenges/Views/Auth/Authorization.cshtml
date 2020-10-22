@@ -1,34 +1,27 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .input_box {
-            width: 100%;
-        }
-    </style>
+﻿@if (ViewBag.errCode != 0)
+{
+    <p>Неправильный логин/пароль</p>
+}
 
-    <title></title>
-</head>
-<body>
-    @if (ViewBag.errCode != 0)
-    {
-        <p>Неправильный логин/пароль</p>
+<style>
+    .input_box {
+
     }
-    <form method="get" action="/Auth/Authorize">
-        <table>
-            <tr>
-                <td>Логин</td>
-                <td><input type="text" name="login" class="input_box"/></td>
-            </tr>
-            <tr>
-                <td>Пароль</td>
-                <td><input type="text" name="password" class="input_box"/></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Авторизоваться" class="input_box"/></td>
-            </tr>
-        </table>
-    </form>
-    <a href="/Auth/Registration">Еще нет аккаунта? Зарегестрироваться</a>
-</body>
-</html>
+</style>
+
+<form method="get" action="/Auth/Authorize">
+    <table>
+        <tr>
+            <td>Логин</td>
+            <td><input type="text" name="login" class="input_box"/></td>
+        </tr>
+        <tr>
+            <td>Пароль</td>
+            <td><input type="text" name="password" class="input_box"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Авторизоваться" class="input_box"/></td>
+        </tr>
+    </table>
+</form>
+<a href="/Auth/Registration">Еще нет аккаунта? Зарегестрироваться</a>

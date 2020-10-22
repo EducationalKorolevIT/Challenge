@@ -49,10 +49,7 @@ namespace Challenges.Controllers
             Users found = SharedObjects.database.Users.FirstOrDefault(e => e.Login == login && e.Password == password);
             if (found != null)
             {
-                if (found.Nickname == null)
-                    Session["userNickname"] = found.Login;
-                else
-                    Session["userNickname"] = found.Nickname;
+                Session["User"] = found;
                 return new RedirectResult("/Home/Index");
             }
             else
