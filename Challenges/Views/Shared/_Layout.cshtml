@@ -1,18 +1,8 @@
 ﻿<!DOCTYPE html>
-
-<!--{
-    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
-    if (user.Nickname == null) { user.Nickname = user.Login; }
-    ViewBag.User = user;
-    ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
-    ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
-}-->
-
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/Content/style.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
+    <link rel="stylesheet" type="text/css" href="~/Files/GetFile?fileString=Content/style.css"/>
 
     <title>
         Challenge
@@ -23,7 +13,7 @@
     <div class="menu">
         <h1 class="logo">Logo</h1>
         <nav class="nav">
-            <a class="nav_link1" href="#main">Главная</a>
+            <a class="nav_link" href="#main">Главная</a>
             <a class="nav_link" href="#rivals">Соперники</a>
             <a class="nav_link" href="#search">Поиск</a>
             <a class="nav_link" href="#notifications">Уведомления</a>
@@ -37,7 +27,6 @@
 
         <button class="button-hide"><span>Скрыть</span></button>
     </div>
-
 
     <div class="content">
         @RenderBody()
