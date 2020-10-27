@@ -204,6 +204,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\img1.JPG" />
+    <Content Include="Content\css\img2.JPG" />
+    <Content Include="Content\css\img3.JPG" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Avatars\1005.jpg" />

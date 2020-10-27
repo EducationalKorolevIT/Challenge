@@ -1,54 +1,48 @@
 ﻿<!DOCTYPE html>
 
-@{ 
+<!--{
     Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
     if (user.Nickname == null) { user.Nickname = user.Login; }
     ViewBag.User = user;
     ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
     ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
-}
+}-->
 
-<html>
+<html lang="ru">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/Content/style.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
+
     <title>
         Challenge
     </title>
-    <link rel="stylesheet" href="~/Content/style.css"/>
 </head>
 
 <body>
     <div class="menu">
         <h1 class="logo">Logo</h1>
         <nav class="nav">
-            <a class="nav_link" href="#main">Главная</a>
+            <a class="nav_link1" href="#main">Главная</a>
             <a class="nav_link" href="#rivals">Соперники</a>
             <a class="nav_link" href="#search">Поиск</a>
             <a class="nav_link" href="#notifications">Уведомления</a>
             <a class="nav_link" href="#messanges">Сообщения</a>
             <a class="nav_link" href="#save">Сохранённое</a>
-            @if (ViewBag.IsAuthorized)
-            {
-                if (ViewBag.IsAvatarExist)
-                {
-                    <img src="/Files/GetAvatar" width="64"/>
-                }
-                <a class="nav_link" href="/Auth/Profile">@ViewBag.User.Nickname</a>
-            }
-            else
-            {
-                <a class="nav_link" href="/Auth/Authorization">Войти</a>
-            }
+            <a class="nav_link" href="#profile">Профиль</a>
             <a class="nav_link" href="#customization">Настройки</a>
         </nav>
 
-        <div class="button">
-            <a class="btn btn-oval" href="#button_action">-</a>
-        </div>
+
+
+        <button class="button-hide"><span>Скрыть</span></button>
     </div>
-    @RenderBody()
+
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
     <div class="topics">
         <h2 class="topics_title">Актуальные темы</h2>
         <nav class="topics_nav">
@@ -60,5 +54,8 @@
             <a class="topics_link" href="#topics_link">Челленджей</a>
         </nav>
     </div>
+
+
+
 </body>
 </html>
