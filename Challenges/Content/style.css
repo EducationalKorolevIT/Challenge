@@ -29,6 +29,8 @@ body {
     padding: 0 50px;
     width: 20%;
     padding-top: 30px;
+    min-width: 400px;
+    max-width: 400px;
 }
 
 /* Logo menu */
@@ -166,15 +168,16 @@ body {
 
 /* Content */
 .content {
-
     background-color: #f3ba3f;
     height: 2500px;
     width: 100%;
     flex: 0 0 auto;
     padding: 0 50px;
-    background-image: url(css/img1.JPG);
+    position: fixed;
+    left: 400px;
+    padding-right: 800px;
+    background-image: url(/Files/GetJpgFile?fileString=Content/css/img1.JPG);
     background-size: 100%;
-
 }
 /* Content end */
 
@@ -190,6 +193,8 @@ body {
     width: 30%;
     padding: 0 50px;
     padding-top: 30px;
+    max-width: 300px;
+    min-width: 300px;
 }
 
 .topics_title {

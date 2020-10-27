@@ -1,9 +1,18 @@
 ﻿<!DOCTYPE html>
+
+@{
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
+    if (user.Nickname == null) { user.Nickname = user.Login; }
+    ViewBag.User = user;
+    ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
+    ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
+}
+
 <html lang="ru">
 <head>
     <meta charset="utf-8">
 
-    @Styles.Render("~/Content/")
+    <link rel="stylesheet" href="/Files/GetCssFile?fileString=Content/style.css" />
 
     <title>
         Challenge
@@ -20,7 +29,18 @@
             <a class="nav_link" href="#notifications">Уведомления</a>
             <a class="nav_link" href="#messanges">Сообщения</a>
             <a class="nav_link" href="#save">Сохранённое</a>
-            <a class="nav_link" href="#profile">Профиль</a>
+                @if (ViewBag.IsAuthorized)
+                {
+                    <a class="nav_link" href="/Auth/Profile">
+                    @if (ViewBag.IsAvatarExist)
+                    {
+                        <img src="/Files/GetAvatar" height="32" style="border-radius: 24px; margin-top: 8px;" />
+                    }@ViewBag.User.Nickname</a>
+                }
+                else
+                {
+                    <a class="nav_link" href="/Auth/Authorization">Войти</a>
+                }
             <a class="nav_link" href="#customization">Настройки</a>
         </nav>
 

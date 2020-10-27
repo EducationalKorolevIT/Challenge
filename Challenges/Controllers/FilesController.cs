@@ -33,10 +33,18 @@ namespace Challenges.Controllers
             return new RedirectResult("/Auth/Profile");
         }
 
-        public ActionResult GetFile(string fileString)
+        public ActionResult GetCssFile(string fileString)
         {
-            string file_path = Server.MapPath("~/"+fileString);
-            string file_type = "image/jpeg";
+            string file_path = Server.MapPath("~/" + fileString);
+            string file_type = "text/css";
+            string file_name = "file";
+            return File(file_path, file_type, file_name);
+        }
+
+        public ActionResult GetJpgFile(string fileString)
+        {
+            string file_path = Server.MapPath("~/" + fileString);
+            string file_type = "image/jpg";
             string file_name = "file";
             return File(file_path, file_type, file_name);
         }

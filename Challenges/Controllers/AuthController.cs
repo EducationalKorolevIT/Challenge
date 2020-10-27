@@ -12,14 +12,12 @@ namespace Challenges.Controllers
     {
         public ActionResult Registration(int errCode = 0)
         {
-            ViewBag.UserNickname = Session["userNickname"] ?? "no";
             ViewBag.errCode = errCode;
             return View();
         }
 
         public ActionResult Authorization(int errCode = 0)
         {
-            ViewBag.UserNickname = Session["userNickname"] ?? "no";
             ViewBag.errCode = errCode;
             return View();
         }
