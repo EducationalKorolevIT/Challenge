@@ -1,8 +1,38 @@
-﻿<style>
-    input {
+﻿@{
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
+    if (user.Nickname == null) { user.Nickname = user.Login; }
+    ViewBag.User = user;
+    ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
+}
+
+<style>
+    .input_box {
         min-width: 100%;
     }
 </style>
 
-<h1>Настройки профиля</h1>
-<input
+<p>
+    <h1>Настройки профиля</h1>
+</p>
+@if (ViewBag.IsAuthorized)
+{
+<form method="post" enctype="multipart/form-data" action="/Files/UpdateProfile">
+    <table style="width: 100%; border: 1px solid black;" border="1">
+        <tr>
+            <td>Никнейм</td>
+            <td><input type="text" class="input_box" value="@ViewBag.User.Nickname" name="nickname" /></td>
+        </tr>
+        <tr>
+            <td>Аватарка</td>
+            <td><input type="file" class="input_box" name="avatarupload"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit"/></td>
+        </tr>
+    </table>
+</form>
+}
+else
+{
+<p>Упс, произошла ошибка. Возможно, вы не авторизованы?</p>
+}

@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 
 @{ 
-    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users { Nickname = "no" };
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
     if (user.Nickname == null) { user.Nickname = user.Login; }
     ViewBag.User = user;
     ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
+    ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
 }
 
 <html>
@@ -30,7 +31,11 @@
             <a class="nav_link" href="#save">Сохранённое</a>
             @if (ViewBag.IsAuthorized)
             {
-                <a class="nav_link" href="#profile">@ViewBag.User.Nickname</a>
+                if (ViewBag.IsAvatarExist)
+                {
+                    <img src="/Files/GetAvatar" width="64"/>
+                }
+                <a class="nav_link" href="/Auth/Profile">@ViewBag.User.Nickname</a>
             }
             else
             {
