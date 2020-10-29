@@ -259,6 +259,9 @@
     <Content Include="Views\Auth\Registration.cshtml" />
     <Content Include="Views\Auth\Authorization.cshtml" />
     <Content Include="Views\Auth\Profile.cshtml" />
+    <Content Include="Views\Home\Competitors.cshtml" />
+    <Content Include="Views\Home\Notifications.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

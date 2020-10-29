@@ -23,10 +23,10 @@
     <div class="menu">
         <h1 class="logo">Logo</h1>
         <nav class="nav">
-            <a class="nav_link" href="#main">Главная</a>
-            <a class="nav_link" href="#rivals">Соперники</a>
-            <a class="nav_link" href="#search">Поиск</a>
-            <a class="nav_link" href="#notifications">Уведомления</a>
+            <a class="nav_link" href="/Home/Index">Главная</a>
+            <a class="nav_link" href="/Home/Competitors">Соперники</a>
+            <a class="nav_link" href="">Поиск</a>
+            <a class="nav_link" href="/Home/Notifications">Уведомления</a>
             <a class="nav_link" href="#messanges">Сообщения</a>
             <a class="nav_link" href="#save">Сохранённое</a>
                 @if (ViewBag.IsAuthorized)
@@ -41,7 +41,7 @@
                 {
                     <a class="nav_link" href="/Auth/Authorization">Войти</a>
                 }
-            <a class="nav_link" href="#customization">Настройки</a>
+            <a class="nav_link" href="/Home/Settings">Настройки</a>
         </nav>
 
 

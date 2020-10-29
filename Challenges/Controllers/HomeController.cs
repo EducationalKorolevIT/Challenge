@@ -14,12 +14,17 @@ namespace Challenges.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Competitors()
         {
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Notifications()
+        {
+            return View();
+        }
+
+        public ActionResult Settings()
         {
             return View();
         }

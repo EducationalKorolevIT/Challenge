@@ -1,0 +1,19 @@
+﻿<h1>Соперники</h1>
+
+@{ 
+    Challenges.Models.Users[] users = Challenges.Models.SharedObjects.database.Users.ToArray();
+    ViewBag.users = users;
+}
+
+<table style="background: rgb(255, 106, 0);" border="1">
+    @foreach (Challenges.Models.Users user in ViewBag.users) {
+        <tr>
+            <td>@(user.Nickname??user.Login)</td>
+            <td>@user.CreateDate.ToString()</td>
+            @if (File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg")))
+            {
+                <td><img src="@("/Files/GetJpgFile?fileString=Files/Avatars/"+user.Id+".jpg")" height="32" /></td>
+            }
+        </tr>
+    }
+</table>
