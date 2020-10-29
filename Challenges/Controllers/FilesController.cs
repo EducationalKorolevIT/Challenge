@@ -2,16 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Challenges.Controllers
 {
     public class FilesController : Controller
     {
-        public ActionResult GetAvatar()
+        async public Task<ActionResult> GetAvatar()
         {
-            Users user = (Users)Session["User"] ?? new Users { Id = 0 };
+            Users user = SharedObjects.GetCookieUserData() ?? new Users { Id = 0 };
             string file_path = Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg");
             string file_type = "image/jpeg";
             string file_name = user.Id + ".jpg";
@@ -19,9 +21,9 @@ namespace Challenges.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateProfile(string nickname, HttpPostedFileBase avatarupload)
+        async public Task<ActionResult> UpdateProfile(string nickname, HttpPostedFileBase avatarupload)
         {
-            Users user = (Users)Session["User"];
+            Users user = SharedObjects.GetCookieUserData();
             if (user != null)
             {
                 user.Nickname = nickname;
@@ -29,11 +31,11 @@ namespace Challenges.Controllers
                     avatarupload.SaveAs(Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
                 SharedObjects.database.SaveChanges();
             }
-
+            SharedObjects.SetCookieUserData(SharedObjects.database.Users.FirstOrDefault(e=>e.Id==user.Id && e.Password==user.Password));
             return new RedirectResult("/Auth/Profile");
         }
 
-        public ActionResult GetCssFile(string fileString)
+        async public Task<ActionResult> GetCssFile(string fileString)
         {
             string file_path = Server.MapPath("~/" + fileString);
             string file_type = "text/css";
@@ -41,7 +43,7 @@ namespace Challenges.Controllers
             return File(file_path, file_type, file_name);
         }
 
-        public ActionResult GetJpgFile(string fileString)
+        async public Task<ActionResult> GetJpgFile(string fileString)
         {
             string file_path = Server.MapPath("~/" + fileString);
             string file_type = "image/jpg";

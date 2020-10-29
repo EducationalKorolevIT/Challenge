@@ -1,8 +1,8 @@
 ﻿@{
-    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
+    Challenges.Models.Users user = (Challenges.Models.Users)Challenges.Models.SharedObjects.GetCookieUserData() ?? new Challenges.Models.Users();
     if (user.Nickname == null) { user.Nickname = user.Login; }
     ViewBag.User = user;
-    ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
+    ViewBag.IsAuthorized = (Challenges.Models.Users)Challenges.Models.SharedObjects.GetCookieUserData() != null;
 }
 
 <style>
@@ -30,6 +30,9 @@
             <td colspan="2"><input type="submit"/></td>
         </tr>
     </table>
+</form>
+<form method="get" action="/Auth/Exit">
+    <input type="submit" value="Выйти" style="background-color: red;" />
 </form>
 }
 else

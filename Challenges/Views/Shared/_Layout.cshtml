@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 
 @{
-    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
+    Challenges.Models.Users user = Challenges.Models.SharedObjects.GetCookieUserData() ?? new Challenges.Models.Users();
+    Challenges.Models.Users userNullable = Challenges.Models.SharedObjects.GetCookieUserData();
     if (user.Nickname == null) { user.Nickname = user.Login; }
     ViewBag.User = user;
-    ViewBag.IsAuthorized = (Challenges.Models.Users)Session["User"] != null;
+    ViewBag.IsAuthorized = (Challenges.Models.Users)userNullable != null;
     ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
 }
 
