@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.IsAuthorized = Session["User"] != null;
+    if (ViewBag.IsAuthorized)
+    {
+        int targetUserId = ((Challenges.Models.Users)Session["User"]).Id;
+        Challenges.Models.Challenges_Table[] challenges = Challenges.Models.SharedObjects.database.Challenges_Table.Where(e => e.Id_User_To == targetUserId).ToArray();
+        ViewBag.Challenges = challenges;
+    }
+}
+
+<h2>Соперники</h2>
+<br />
+
+@if (ViewBag.IsAuthorized)
+{
+    foreach(Challenges.Models.Challenges_Table ch in ViewBag.Challenges)
+    {
+        <video style="border-radius: 10px" controls src="/Files/GetChallengeVideoFile?videoId=@ch.Id" height="480"></video>
+        <br />
+        <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
+        <br />
+    }
+}
+else
+{
+    <p>Вы не авторизованы.</p>
+}

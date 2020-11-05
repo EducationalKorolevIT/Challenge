@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&f..');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* Container = body */
+body {
+    font-family: 'Kaushan Script', cursive;
+    font-family: 'Nunito', sans-serif;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+/* !!!Challenge!!! */
+/* Menu */
+.menu {
+    background-color: #063852;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1500px;
+    padding: 0 50px;
+    width: 20%;
+    padding-top: 30px;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+/* Logo menu */
+
+.logo {
+    font-size: 50px;
+    font-weight: 700;
+    color: #E6DF44;
+
+    transition: 1.5s; 
+    z-index: 1;
+    padding-bottom: 30px;
+    padding-left: 30px;
+
+
+}
+
+/* Nav menu */
+
+.nav_link {
+    display: flex;
+    
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+
+	cursor: pointer;
+    font-size: 32px;
+
+    line-height: 1.5;
+
+    margin: 0 auto;
+
+    border-radius: 50px;
+
+    padding-right: 20px;
+    text-align: center;
+    color: #ff8f1f;
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+
+.nav_link img {
+    height: 32px; 
+    width : 32px;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.nav_link div{
+    float: left;
+}
+
+.nav_link:hover {
+    color: #ff8f1f;
+
+}
+.nav_link:before,
+.nav_link:after {
+	content: "";
+	position: absolute;  
+    height: 200px;
+    
+    left: -25%;
+    margin-top: -100px;    
+    top: 50%;
+    width: 200px;
+	border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    transform: scale(0);
+}
+.nav_link:before {
+    background:  #967b61;  
+    transition: .8s ease-out;
+}
+.nav_link:after {   
+    transition: .4s ease-in .3s;
+}
+.nav_link:hover:before,
+.nav_link:hover:after{
+    opacity: 0.8;
+    transform: scale(4);
+}
+
+
+
+/* Button menu */
+
+.button-hide {
+
+    margin-top: 30px;
+    margin-left: 50px;
+    background: transparent;
+    border-width: 0;
+    position: relative;
+    cursor: pointer;
+    font-size: 30px;
+    transition: .3s;
+}
+
+.button-hide span {
+    display: block;
+    position: relative;
+    z-index: 3;
+    background: #170250;
+    color: #fffbb0;
+    padding: 0 30px;
+    line-height: 40px;
+}
+
+.button-hide:before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    left: -5px;
+    top: -5px;
+    background: #ff4675;
+    z-index: 1;
+    transition: .4s ease-out;
+}
+
+.button-hide:after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+    right: -5px;
+    bottom: -5px;
+    background: #f0910f;
+    transition: .4s ease-out .1s;
+}
+
+.button-hide:hover:before {
+    transform: translate(5px, 5px);
+}
+
+.button-hide:hover:after {
+    transform: translate(-5px, -5px);
+}
+
+/* Menu end */
+
+
+
+
+/* Content */
+.content {
+    position: fixed;
+    left: 400px;
+    padding-right: 800px;
+    background-color: #1072a7;
+    height: 2500px;
+    width: 100%;
+    flex: 0 0 auto;
+    padding: 0 50px;
+    background-image: url(/Files/GetJpgFile?fileString=Content/css/img1.JPG);
+    background-size: 100%;
+}
+/* Content end */
+
+
+
+/* Topics*/
+.topics {
+    background-color: #063852;
+    height: 1500px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 30%;
+    padding: 0 50px;
+    padding-top: 30px;
+
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.topics_title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #E6DF44;
+}
+
+.topics_nav {
+    font-size: 25px;
+    padding-top: 15px;
+    line-height: 1.5;
+}
+
+.topics_link {
+    display: inline-block;
+
+    display: flex;
+    justify-content: space-between;
+
+    left: 300px;
+    margin: 0 15px;
+    
+
+    color: #f3993f;
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+
+.topics_link:hover {
+    color: #f3ba3f;
+
+}
+
+.topics_link:hover:after {
+    opacity: 1;
+}
+/* Topics end*/
+
+
+
+
+/* */
+/* */
+/* */
+/* */

@@ -12,5 +12,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Messages">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Challenges_Table">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Challenges_Table">
+        <MappingFragment StoreEntitySet="Challenges_Table">
+          <ScalarProperty Name="Id_User_To" ColumnName="Id_User_To" />
+          <ScalarProperty Name="Id_User_From" ColumnName="Id_User_From" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responses_Table">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Responses_Table">
+        <MappingFragment StoreEntitySet="Responses_Table">
+          <ScalarProperty Name="Id_Challenges_Table" ColumnName="Id_Challenges_Table" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

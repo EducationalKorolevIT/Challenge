@@ -182,6 +182,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Challenges_Table.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Messages.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -197,6 +203,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Responses_Table.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SharedObjects.cs" />
     <Compile Include="Models\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -204,12 +213,28 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\bell.png" />
+    <Content Include="Content\css\bookmark.png" />
+    <Content Include="Content\css\devil%282%29.png" />
+    <Content Include="Content\css\devil.png" />
+    <Content Include="Content\css\eye.JPG" />
+    <Content Include="Content\css\house_main.png" />
     <Content Include="Content\css\img1.JPG" />
     <Content Include="Content\css\img2.JPG" />
     <Content Include="Content\css\img3.JPG" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\css\loupe.png" />
+    <Content Include="Content\css\message.png" />
+    <Content Include="Content\css\settings.png" />
+    <Content Include="Content\css\user.png" />
+    <Content Include="Content\css\vdnh1.JPG" />
+    <Content Include="Content\css\vdnh2.JPG" />
+    <Content Include="Content\css\vdnh3.JPG" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\profile.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Avatars\1005.jpg" />
+    <Content Include="Files\Challenges\1.mp4" />
+    <Content Include="Files\Challenges\2.mp4" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
@@ -253,16 +278,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Auth\Registration.cshtml" />
     <Content Include="Views\Auth\Authorization.cshtml" />
     <Content Include="Views\Auth\Profile.cshtml" />
+    <Content Include="Views\Files\UploadChallengePage.cshtml" />
+    <Content Include="Views\Home\Competitors.cshtml" />
+    <Content Include="Views\Auth\Main.cshtml" />
+    <Content Include="Views\Files\UploadChallengeResponsePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Files\" />
+    <Folder Include="Files\Responses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

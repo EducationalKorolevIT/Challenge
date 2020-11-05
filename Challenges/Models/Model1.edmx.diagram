@@ -6,6 +6,12 @@
     <edmx:Diagrams>
       <Diagram DiagramId="948b193441dd4714bbdaa112635265ac" Name="Diagram1" >
         <EntityTypeShape EntityType="ChallengesDBModel.Users" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ChallengesDBModel.Messages" Width="1.5" PointX="0.75" PointY="4.375" />
+        <EntityTypeShape EntityType="ChallengesDBModel.Challenges_Table" Width="1.5" PointX="3.875" PointY="1.125" />
+        <AssociationConnector Association="ChallengesDBModel.FK_Challenges_User_From1" />
+        <AssociationConnector Association="ChallengesDBModel.FK_Challenges_User_To1" />
+        <EntityTypeShape EntityType="ChallengesDBModel.Responses_Table" Width="1.5" PointX="6.125" PointY="1.5" />
+        <AssociationConnector Association="ChallengesDBModel.FK_Responses_Table_To_Challenge" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

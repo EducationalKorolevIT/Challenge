@@ -1,22 +1,21 @@
 ﻿<!DOCTYPE html>
 
 @{
-    Challenges.Models.Users user = Challenges.Models.SharedObjects.GetCookieUserData() ?? new Challenges.Models.Users();
-    Challenges.Models.Users userNullable = Challenges.Models.SharedObjects.GetCookieUserData();
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
     if (user.Nickname == null) { user.Nickname = user.Login; }
     ViewBag.User = user;
-    ViewBag.IsAuthorized = (Challenges.Models.Users)userNullable != null;
+    ViewBag.IsAuthorized = Session["User"] != null;
     ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
 }
 
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-
-    <link rel="stylesheet" href="/Files/GetCssFile?fileString=Content/style.css" />
+    <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
 
     <title>
-        Challenge
+        Главная
     </title>
 </head>
 
@@ -24,25 +23,26 @@
     <div class="menu">
         <h1 class="logo">Logo</h1>
         <nav class="nav">
-            <a class="nav_link" href="#main">Главная</a>
-            <a class="nav_link" href="#rivals">Соперники</a>
-            <a class="nav_link" href="#search">Поиск</a>
-            <a class="nav_link" href="#notifications">Уведомления</a>
-            <a class="nav_link" href="#messanges">Сообщения</a>
-            <a class="nav_link" href="#save">Сохранённое</a>
-                @if (ViewBag.IsAuthorized)
-                {
-                    <a class="nav_link" href="/Auth/Profile">
+            <a class="nav_link" href="/Home/Index">  <img src="/Files/GetJpgFile?fileString=Content/css/house_main.PNG">  <div> Главная</div></a>
+            <a class="nav_link" href="/Home/Competitors">   <img src="/Files/GetJpgFile?fileString=Content/css/devil(2).png"> Соперники</a>
+            <a class="nav_link" href="#search">  <img src="/Files/GetJpgFile?fileString=Content/css/loupe.png"> Поиск</a>
+            <a class="nav_link" href="/Home/Notifications">  <img src="/Files/GetJpgFile?fileString=Content/css/bell.png"> Уведомления</a>
+            <a class="nav_link" href="/Home/Messanges">  <img src="/Files/GetJpgFile?fileString=Content/css/message.png"> Сообщения</a>
+            <a class="nav_link" href="#save">  <img src="/Files/GetJpgFile?fileString=Content/css/bookmark.png"> Сохранённое</a>
+            @if (ViewBag.IsAuthorized)
+            {
+                <a class="nav_link" href="/Auth/Profile">
                     @if (ViewBag.IsAvatarExist)
                     {
                         <img src="/Files/GetAvatar" height="32" style="border-radius: 24px; margin-top: 8px;" />
-                    }@ViewBag.User.Nickname</a>
-                }
-                else
-                {
-                    <a class="nav_link" href="/Auth/Authorization">Войти</a>
-                }
-            <a class="nav_link" href="#customization">Настройки</a>
+                    }@ViewBag.User.Nickname
+                </a>
+            }
+            else
+            {
+                <a class="nav_link" href="/Auth/Authorization">  <img src="/Files/GetJpgFile?fileString=Content/css/user.png"> Войти</a>
+            }
+            <a class="nav_link" href="#customization">  <img src="/Files/GetJpgFile?fileString=Content/css/settings.png"> Настройки</a>
         </nav>
 
 
@@ -53,6 +53,8 @@
     <div class="content">
         @RenderBody()
     </div>
+
+
 
     <div class="topics">
         <h2 class="topics_title">Актуальные темы</h2>
@@ -65,6 +67,7 @@
             <a class="topics_link" href="#topics_link">Челленджей</a>
         </nav>
     </div>
+
 
 
 

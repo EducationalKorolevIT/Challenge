@@ -19,6 +19,8 @@ namespace Challenges.Models
 
         public static Users GetCookieUserData()
         {
+            if (HttpContext.Current.Request.Cookies["User"] == null) return null;
+            if (HttpContext.Current.Request.Cookies["User"].Value == null) return null;
             try
             {
                 return new JavaScriptSerializer().Deserialize<Users>(HttpContext.Current.Request.Cookies["User"].Value);

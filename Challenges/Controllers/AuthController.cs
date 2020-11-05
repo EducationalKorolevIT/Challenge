@@ -19,14 +19,16 @@ namespace Challenges.Controllers
             return View();
         }
 
-        public ActionResult Authorization(int errCode = 0)
+        public ActionResult Authorization(int errCode = 0, string errText = null)
         {
             ViewBag.errCode = errCode;
+            ViewBag.errText = errText;
             return View();
         }
 
-        public ActionResult Profile()
+        public ActionResult Profile(string errText = null)
         {
+            ViewBag.errText = errText;
             return View();
         }
 
@@ -48,6 +50,27 @@ namespace Challenges.Controllers
             }
         }
 
+        public ActionResult SaveToCookie()
+        {
+            if (Session["User"] != null)
+            {
+                Response.Cookies["UserData"].Value = new JavaScriptSerializer().Serialize(Session["User"]);
+                return new RedirectResult("/Home/Index");
+            }
+            return new RedirectResult("/Auth/Profile?errText=Ошибка: Session[\"User\"] равно null. Возможно, вы не вошли?");
+        }
+
+        public ActionResult LoadFromCookie()
+        {
+            if (Request.Cookies["UserData"] != null)
+            {
+                Session["User"] = new JavaScriptSerializer().Deserialize<Users>(Request.Cookies["UserData"].Value);
+                return new RedirectResult("/Home/Index");
+            }
+            return new RedirectResult("/Auth/Authorization?errText=Ошибка: Request.Cooukies[\"UserData\"] равно null. Возможно, у вас нет сохранённого пользователя?");
+        }
+
+
         async public Task<RedirectResult> Authorize()
         {
             string login = Request.Params["login"];
@@ -55,7 +78,7 @@ namespace Challenges.Controllers
             Users found = SharedObjects.database.Users.FirstOrDefault(e => e.Login == login && e.Password == password);
             if (found != null)
             {
-                SharedObjects.SetCookieUserData(found);
+                Session["User"] = found;
                 return new RedirectResult("/Home/Index");
             }
             else
@@ -66,8 +89,14 @@ namespace Challenges.Controllers
 
         async public Task<RedirectResult> Exit()
         {
-            Response.Cookies["User"].Value = null;
+            Response.Cookies["UserData"].Value = null;
+            Session["User"] = null;
             return new RedirectResult("/Auth/Authorization");
+        }
+
+        public ActionResult Main()
+        {
+            return View();
         }
     }
 }
