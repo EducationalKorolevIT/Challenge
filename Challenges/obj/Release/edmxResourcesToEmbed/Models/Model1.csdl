@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ChallengesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ChallengesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Users" EntityType="ChallengesDBModel.Users" />
+    <EntitySet Name="Messages" EntityType="ChallengesDBModel.Messages" />
+    <EntitySet Name="Challenges_Table" EntityType="ChallengesDBModel.Challenges_Table" />
+    <AssociationSet Name="FK_Challenges_User_From1" Association="ChallengesDBModel.FK_Challenges_User_From1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Challenges_Table" EntitySet="Challenges_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Challenges_User_To1" Association="ChallengesDBModel.FK_Challenges_User_To1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Challenges_Table" EntitySet="Challenges_Table" />
+    </AssociationSet>
+    <EntitySet Name="Responses_Table" EntityType="ChallengesDBModel.Responses_Table" />
+    <AssociationSet Name="FK_Responses_Table_To_Challenge" Association="ChallengesDBModel.FK_Responses_Table_To_Challenge">
+      <End Role="Challenges_Table" EntitySet="Challenges_Table" />
+      <End Role="Responses_Table" EntitySet="Responses_Table" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Challenges_Table" Relationship="ChallengesDBModel.FK_Challenges_User_From1" FromRole="Users" ToRole="Challenges_Table" />
+    <NavigationProperty Name="Challenges_Table1" Relationship="ChallengesDBModel.FK_Challenges_User_To1" FromRole="Users" ToRole="Challenges_Table" />
+  </EntityType>
+  <EntityType Name="Messages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MessageText" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="MessageDateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Challenges_Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_User_From" Type="Int32" Nullable="false" />
+    <Property Name="Id_User_To" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="ChallengesDBModel.FK_Challenges_User_From1" FromRole="Challenges_Table" ToRole="Users" />
+    <NavigationProperty Name="Users1" Relationship="ChallengesDBModel.FK_Challenges_User_To1" FromRole="Challenges_Table" ToRole="Users" />
+    <NavigationProperty Name="Responses_Table" Relationship="ChallengesDBModel.FK_Responses_Table_To_Challenge" FromRole="Challenges_Table" ToRole="Responses_Table" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Challenges_User_From1">
+    <End Type="ChallengesDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="ChallengesDBModel.Challenges_Table" Role="Challenges_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Challenges_Table">
+        <PropertyRef Name="Id_User_From" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Challenges_User_To1">
+    <End Type="ChallengesDBModel.Users" Role="Users" Multiplicity="1" />
+    <End Type="ChallengesDBModel.Challenges_Table" Role="Challenges_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Challenges_Table">
+        <PropertyRef Name="Id_User_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Responses_Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Challenges_Table" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Challenges_Table" Relationship="ChallengesDBModel.FK_Responses_Table_To_Challenge" FromRole="Responses_Table" ToRole="Challenges_Table" />
+  </EntityType>
+  <Association Name="FK_Responses_Table_To_Challenge">
+    <End Type="ChallengesDBModel.Challenges_Table" Role="Challenges_Table" Multiplicity="1" />
+    <End Type="ChallengesDBModel.Responses_Table" Role="Responses_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Challenges_Table">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Responses_Table">
+        <PropertyRef Name="Id_Challenges_Table" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

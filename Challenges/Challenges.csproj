@@ -256,6 +256,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -283,9 +284,10 @@
     <Content Include="Views\Auth\Authorization.cshtml" />
     <Content Include="Views\Auth\Profile.cshtml" />
     <Content Include="Views\Files\UploadChallengePage.cshtml" />
-    <Content Include="Views\Home\Competitors.cshtml" />
+    <Content Include="Views\Home\CompetitorsIncoming.cshtml" />
     <Content Include="Views\Auth\Main.cshtml" />
     <Content Include="Views\Files\UploadChallengeResponsePage.cshtml" />
+    <Content Include="Views\Home\CompetitorsOutcoming.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

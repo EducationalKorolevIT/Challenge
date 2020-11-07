@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ChallengesDBModelContainer" CdmEntityContainer="ChallengesDBEntities">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Messages">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+          <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Challenges_Table">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Challenges_Table">
+        <MappingFragment StoreEntitySet="Challenges_Table">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Id_User_To" ColumnName="Id_User_To" />
+          <ScalarProperty Name="Id_User_From" ColumnName="Id_User_From" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Responses_Table">
+      <EntityTypeMapping TypeName="ChallengesDBModel.Responses_Table">
+        <MappingFragment StoreEntitySet="Responses_Table">
+          <ScalarProperty Name="Id_Challenges_Table" ColumnName="Id_Challenges_Table" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

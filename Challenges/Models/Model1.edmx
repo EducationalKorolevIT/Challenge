@@ -10,9 +10,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Completed" Type="bit" Nullable="false" />
           <Property Name="Id_User_From" Type="int" Nullable="false" />
           <Property Name="Id_User_To" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="Messages">
           <Key>
@@ -140,12 +140,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Completed" Type="Boolean" Nullable="false" />
           <Property Name="Id_User_From" Type="Int32" Nullable="false" />
           <Property Name="Id_User_To" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="ChallengesDBModel.FK_Challenges_User_From1" FromRole="Challenges_Table" ToRole="Users" />
           <NavigationProperty Name="Users1" Relationship="ChallengesDBModel.FK_Challenges_User_To1" FromRole="Challenges_Table" ToRole="Users" />
           <NavigationProperty Name="Responses_Table" Relationship="ChallengesDBModel.FK_Responses_Table_To_Challenge" FromRole="Challenges_Table" ToRole="Responses_Table" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Challenges_User_From1">
           <End Type="ChallengesDBModel.Users" Role="Users" Multiplicity="1" />
@@ -220,9 +220,9 @@
           <EntitySetMapping Name="Challenges_Table">
             <EntityTypeMapping TypeName="ChallengesDBModel.Challenges_Table">
               <MappingFragment StoreEntitySet="Challenges_Table">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Id_User_To" ColumnName="Id_User_To" />
                 <ScalarProperty Name="Id_User_From" ColumnName="Id_User_From" />
-                <ScalarProperty Name="Completed" ColumnName="Completed" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

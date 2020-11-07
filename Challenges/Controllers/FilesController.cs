@@ -59,6 +59,14 @@ namespace Challenges.Controllers
             return File(file_path, file_type, file_name);
         }
 
+        async public Task<ActionResult> GetChallengeResponseVideoFile(long videoId)
+        {
+            string file_path = Server.MapPath("~/Files/Responses/" + videoId + ".mp4");
+            string file_type = "video/mp4";
+            string file_name = videoId + ".mp4";
+            return File(file_path, file_type, file_name);
+        }
+
         async public Task<ActionResult> UploadChallengePage()
         {
             return View();
@@ -71,7 +79,7 @@ namespace Challenges.Controllers
         }
 
         [HttpPost]
-        async public Task<ActionResult> UploadChallenge(string userNameTo, HttpPostedFileBase videoFile)
+        async public Task<ActionResult> UploadChallenge(string userNameTo, string challengeDescription, HttpPostedFileBase videoFile)
         {
             if (videoFile != null)
             {
@@ -87,7 +95,7 @@ namespace Challenges.Controllers
                         {
                             Id_User_From = ((Users)Session["User"]).Id,
                             Id_User_To = userTo.Id,
-                            Completed = false
+                            Description = challengeDescription
                         };
                         SharedObjects.database.Challenges_Table.Add(challenge);
                         videoFile.SaveAs(Server.MapPath("~/Files/Challenges/" + nextId + ".mp4"));

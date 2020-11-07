@@ -5,9 +5,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Completed" Type="bit" Nullable="false" />
     <Property Name="Id_User_From" Type="int" Nullable="false" />
     <Property Name="Id_User_To" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="256" Nullable="false" />
   </EntityType>
   <EntityType Name="Messages">
     <Key>

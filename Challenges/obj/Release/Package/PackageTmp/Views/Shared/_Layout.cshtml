@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+@{
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
+    if (user.Nickname == null) { user.Nickname = user.Login; }
+    ViewBag.User = user;
+    ViewBag.IsAuthorized = Session["User"] != null;
+    ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
+}
+
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
+
+    <title>
+        Главная
+    </title>
+</head>
+
+<body>
+    <div class="menu">
+        <h1 class="logo">Logo</h1>
+        <nav class="nav">
+            <a class="nav_link" href="/Home/Index">  <img src="/Files/GetJpgFile?fileString=Content/css/house_main.PNG">  <div> Главная</div></a>
+            <a class="nav_link" href="/Home/CompetitorsIncoming">   <img src="/Files/GetJpgFile?fileString=Content/css/devil(2).png"> Соперники</a>
+            <a class="nav_link" href="#search">  <img src="/Files/GetJpgFile?fileString=Content/css/loupe.png"> Поиск</a>
+            <a class="nav_link" href="/Home/Notifications">  <img src="/Files/GetJpgFile?fileString=Content/css/bell.png"> Уведомления</a>
+            <a class="nav_link" href="/Home/Messanges">  <img src="/Files/GetJpgFile?fileString=Content/css/message.png"> Сообщения</a>
+            <a class="nav_link" href="#save">  <img src="/Files/GetJpgFile?fileString=Content/css/bookmark.png"> Сохранённое</a>
+            @if (ViewBag.IsAuthorized)
+            {
+                <a class="nav_link" href="/Auth/Profile">
+                    @if (ViewBag.IsAvatarExist)
+                    {
+                        <img src="/Files/GetAvatar" height="32" style="border-radius: 24px; margin-top: 8px;" />
+                    }@ViewBag.User.Nickname
+                </a>
+            }
+            else
+            {
+                <a class="nav_link" href="/Auth/Authorization">  <img src="/Files/GetJpgFile?fileString=Content/css/user.png"> Войти</a>
+            }
+            <a class="nav_link" href="#customization">  <img src="/Files/GetJpgFile?fileString=Content/css/settings.png"> Настройки</a>
+            <a class="nav_link" href="/Files/UploadChallengePage">  <img src="/Files/GetJpgFile?fileString=Content/css/settings.png"> Загрузить видео</a>
+        </nav>
+
+
+
+        <button class="button-hide"><span>Скрыть</span></button>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+
+
+    <div class="topics">
+        <h2 class="topics_title">Актуальные темы</h2>
+        <nav class="topics_nav">
+            <a class="topics_link" href="#topics_link">Здесь</a>
+            <a class="topics_link" href="#topics_link">Будут</a>
+            <a class="topics_link" href="#topics_link">Расположены</a>
+            <a class="topics_link" href="#topics_link">Актуальные</a>
+            <a class="topics_link" href="#topics_link">Темы</a>
+            <a class="topics_link" href="#topics_link">Челленджей</a>
+        </nav>
+    </div>
+
+
+
+
+</body>
+</html>

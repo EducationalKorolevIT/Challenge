@@ -43,12 +43,12 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Completed" Type="Boolean" Nullable="false" />
     <Property Name="Id_User_From" Type="Int32" Nullable="false" />
     <Property Name="Id_User_To" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="ChallengesDBModel.FK_Challenges_User_From1" FromRole="Challenges_Table" ToRole="Users" />
     <NavigationProperty Name="Users1" Relationship="ChallengesDBModel.FK_Challenges_User_To1" FromRole="Challenges_Table" ToRole="Users" />
     <NavigationProperty Name="Responses_Table" Relationship="ChallengesDBModel.FK_Responses_Table_To_Challenge" FromRole="Challenges_Table" ToRole="Responses_Table" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_Challenges_User_From1">
     <End Type="ChallengesDBModel.Users" Role="Users" Multiplicity="1" />

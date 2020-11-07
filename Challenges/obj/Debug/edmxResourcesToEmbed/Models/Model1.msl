@@ -24,9 +24,9 @@
     <EntitySetMapping Name="Challenges_Table">
       <EntityTypeMapping TypeName="ChallengesDBModel.Challenges_Table">
         <MappingFragment StoreEntitySet="Challenges_Table">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Id_User_To" ColumnName="Id_User_To" />
           <ScalarProperty Name="Id_User_From" ColumnName="Id_User_From" />
-          <ScalarProperty Name="Completed" ColumnName="Completed" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

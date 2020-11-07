@@ -21,9 +21,9 @@ namespace Challenges.Models
         }
     
         public long Id { get; set; }
-        public bool Completed { get; set; }
         public int Id_User_From { get; set; }
         public int Id_User_To { get; set; }
+        public string Description { get; set; }
     
         public virtual Users Users { get; set; }
         public virtual Users Users1 { get; set; }

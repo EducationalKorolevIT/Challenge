@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.IsAuthorized = Session["User"] != null;
+    if (ViewBag.IsAuthorized)
+    {
+        int targetUserId = ((Challenges.Models.Users)Session["User"]).Id;
+        Challenges.Models.Challenges_Table[] challenges = Challenges.Models.SharedObjects.database.Challenges_Table.Where(e => e.Id_User_To == targetUserId).ToArray();
+        ViewBag.Challenges = challenges;
+
+        List<Challenges.Models.Responses_Table> responses = new List<Challenges.Models.Responses_Table>();
+        foreach (Challenges.Models.Challenges_Table ch in challenges)
+        {
+            Challenges.Models.Responses_Table resp = Challenges.Models.SharedObjects.database.Responses_Table.FirstOrDefault(e => e.Id_Challenges_Table == ch.Id);
+            if (resp != null){
+                responses.Add(resp);
+            }
+            else
+            {
+                responses.Add(null);
+            }
+        }
+        ViewBag.responses = responses;
+    }
+}
+
+<h2>Соперники</h2>
+<br />
+
+@if (ViewBag.IsAuthorized)
+{
+<ul style="list-style: none;width: 70%;">
+    @for (int i = 0; i < ViewBag.challenges.Length; i++)
+    {
+        Challenges.Models.Challenges_Table ch = ViewBag.challenges[i];
+        Challenges.Models.Responses_Table resp = ViewBag.responses[i];
+        <li style="width: 100%;">
+            <div style="background: rgb(255, 255, 255);width:100%;">
+                Отправленное<br />
+                @ch.Description<br />
+                @Challenges.Models.SharedObjects.database.Users.FirstOrDefault(e => e.Id == ch.Id_User_From).Login<br />
+                <video style="border-radius: 10px" controls src="/Files/GetChallengeVideoFile?videoId=@ch.Id"></video><br />
+                <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
+            </div>
+        </li>
+    }
+</ul>
+}
+else
+{
+    <p>Вы не авторизованы.</p>
+}
