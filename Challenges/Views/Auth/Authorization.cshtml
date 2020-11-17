@@ -1,20 +1,4 @@
-﻿@if (ViewBag.errCode != 0)
-{
-    <p>Неправильный логин/пароль</p>
-}
-
-<style>
-    .input_box {
-        min-width: 100%;
-        width: 100%;
-    }
-
-    .body_table {
-        width: 100%;
-    }
-</style>
-
-<form method="get" action="/Auth/Authorize" class="body_table">
+﻿<form method="get" action="/Auth/Authorize" class="body_table">
     <table class="body_table">
         <tr>
             <td style="max-width: 15px; width: 10px;">Логин</td>

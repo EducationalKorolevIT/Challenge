@@ -29,6 +29,7 @@
     <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="Challenges_Table" Relationship="ChallengesDBModel.FK_Challenges_User_From1" FromRole="Users" ToRole="Challenges_Table" />
     <NavigationProperty Name="Challenges_Table1" Relationship="ChallengesDBModel.FK_Challenges_User_To1" FromRole="Users" ToRole="Challenges_Table" />
+    <Property Name="Reputation" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Messages">
     <Key>
@@ -49,6 +50,7 @@
     <NavigationProperty Name="Users1" Relationship="ChallengesDBModel.FK_Challenges_User_To1" FromRole="Challenges_Table" ToRole="Users" />
     <NavigationProperty Name="Responses_Table" Relationship="ChallengesDBModel.FK_Responses_Table_To_Challenge" FromRole="Challenges_Table" ToRole="Responses_Table" />
     <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
   </EntityType>
   <Association Name="FK_Challenges_User_From1">
     <End Type="ChallengesDBModel.Users" Role="Users" Multiplicity="1" />

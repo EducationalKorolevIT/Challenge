@@ -54,7 +54,7 @@ namespace Challenges.Controllers
         {
             if (Session["User"] != null)
             {
-                Response.Cookies["UserData"].Value = new JavaScriptSerializer().Serialize(Session["User"]);
+                SharedObjects.SetCookieUserData((Users)Session["User"]);
                 return new RedirectResult("/Home/Index");
             }
             return new RedirectResult("/Auth/Profile?errText=Ошибка: Session[\"User\"] равно null. Возможно, вы не вошли?");
@@ -64,7 +64,7 @@ namespace Challenges.Controllers
         {
             if (Request.Cookies["UserData"] != null)
             {
-                Session["User"] = new JavaScriptSerializer().Deserialize<Users>(Request.Cookies["UserData"].Value);
+                Session["User"] = SharedObjects.GetCookieUserData();
                 return new RedirectResult("/Home/Index");
             }
             return new RedirectResult("/Auth/Authorization?errText=Ошибка: Request.Cooukies[\"UserData\"] равно null. Возможно, у вас нет сохранённого пользователя?");

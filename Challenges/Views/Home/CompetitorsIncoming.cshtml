@@ -22,7 +22,7 @@
     }
 }
 
-<h2>Соперники</h2>
+<h2>Принятые челленджи</h2>
 <br />
 
 @if (ViewBag.IsAuthorized)
@@ -38,7 +38,22 @@
                 @ch.Description<br />
                 @Challenges.Models.SharedObjects.database.Users.FirstOrDefault(e => e.Id == ch.Id_User_From).Login<br />
                 <video style="border-radius: 10px" controls src="/Files/GetChallengeVideoFile?videoId=@ch.Id"></video><br />
-                <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
+                @if (ch.Status == 0)
+                {
+                    <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
+                }
+                else if (ch.Status == 1)
+                {
+                    <p>Уже есть ответ на челлендж</p>
+                }
+                @if (ch.Status == 0)
+                {
+                    <a href="/Files/CancelChallengePage?chId=@ch.Id">Отклонить</a>
+                }
+                else if (ch.Status == 2)
+                {
+                    <p>Челлендж отклонён</p>
+                }
             </div>
         </li>
     }

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -19,14 +23,34 @@
 
     <div class="entrance">
 
-        <button class="button_classic">Войти</button>
-        <a class="forget_password" href="forget_your_password">Забыли пароль?</a>
-        <div class="topics_title"><h1>Присоединяйся к Challenge прямо сейчас!</h1> </div>
+        <form method="get" action="/Auth/Authorize" class="body_table">
+            <table class="body_table">
+                <tr>
+                    <td class="enter">Логин</td>
+                    <td><input type="text" class="input_box" name="Login" /></td>
+                </tr>
 
-        <button class="button_classic">Зарегестрироваться</button>
+                <tr>
+                    <td class="enter">Пароль</td>
+                    <td><input type="password" class="input_box" name="Password" /></td>
+                </tr>
+
+                <tr>
+                    <!--<td colspan="2"><input type="submit" value="Войти" class="button_classic" /></td> -->
+                    <td colspan="2">
+                        <input type="submit" class="button_classic" value="Войти"/>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="2">
+                        <div class="topics_title"><h1>Присоединяйся к Challenge прямо сейчас!</h1> </div>
+                        <a class="button_classic" href="/Auth/Registration"> Зарегестрироваться</a>
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-
-
-
 </body>
 </html>

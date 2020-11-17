@@ -213,8 +213,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\audio.png" />
+    <Content Include="Content\css\audio_off.png" />
     <Content Include="Content\css\bell.png" />
     <Content Include="Content\css\bookmark.png" />
+    <Content Include="Content\css\comments.png" />
     <Content Include="Content\css\devil%282%29.png" />
     <Content Include="Content\css\devil.png" />
     <Content Include="Content\css\eye.JPG" />
@@ -224,12 +227,15 @@
     <Content Include="Content\css\img3.JPG" />
     <Content Include="Content\css\loupe.png" />
     <Content Include="Content\css\message.png" />
+    <Content Include="Content\css\more.png" />
     <Content Include="Content\css\settings.png" />
+    <Content Include="Content\css\share.png" />
     <Content Include="Content\css\user.png" />
     <Content Include="Content\css\vdnh1.JPG" />
     <Content Include="Content\css\vdnh2.JPG" />
     <Content Include="Content\css\vdnh3.JPG" />
     <Content Include="Content\main.css" />
+    <Content Include="Content\main.js" />
     <Content Include="Content\profile.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Avatars\1005.jpg" />
@@ -288,6 +294,7 @@
     <Content Include="Views\Auth\Main.cshtml" />
     <Content Include="Views\Files\UploadChallengeResponsePage.cshtml" />
     <Content Include="Views\Home\CompetitorsOutcoming.cshtml" />
+    <Content Include="Views\Files\CancelChallengePage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

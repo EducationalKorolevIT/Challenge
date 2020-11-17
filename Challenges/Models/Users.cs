@@ -26,6 +26,7 @@ namespace Challenges.Models
         public string Password { get; set; }
         public string Nickname { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public int Reputation { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Challenges_Table> Challenges_Table { get; set; }

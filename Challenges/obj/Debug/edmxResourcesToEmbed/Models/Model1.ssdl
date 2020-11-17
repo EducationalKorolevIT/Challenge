@@ -8,6 +8,7 @@
     <Property Name="Id_User_From" Type="int" Nullable="false" />
     <Property Name="Id_User_To" Type="int" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="Messages">
     <Key>
@@ -33,6 +34,7 @@
     <Property Name="Password" Type="varchar" MaxLength="64" Nullable="false" />
     <Property Name="Nickname" Type="text" />
     <Property Name="CreateDate" Type="date" Nullable="false" />
+    <Property Name="Reputation" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_Challenges_User_From">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
