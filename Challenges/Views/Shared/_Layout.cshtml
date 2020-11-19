@@ -14,6 +14,8 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
 
     <title>
         Главная
@@ -24,12 +26,12 @@
     <div class="menu">
         <h1 class="logo">Logo</h1>
         <nav class="nav">
-            <a class="nav_link" href="/Home/Index">  <img src="/Files/GetJpgFile?fileString=Content/css/house_main.PNG">  <div class="hiding_elems_left"> Главная</div></a>
-            <a class="nav_link" href="/Home/CompetitorsIncoming">   <img src="/Files/GetJpgFile?fileString=Content/css/devil(2).png"><div class="hiding_elems_left"> Соперники</div></a>
+            <a class="nav_link" href="/Home/Index">  <img src="/Files/GetJpgFile?fileString=Content/css/house_main.PNG">Главная</a>
+            <a class="nav_link" href="/Home/CompetitorsIncoming">   <img src="/Files/GetJpgFile?fileString=Content/css/devil(2).png">Соперники</a>
             <a class="nav_link" href="#search">  <img src="/Files/GetJpgFile?fileString=Content/css/loupe.png"><div class="hiding_elems_left"> Поиск</div></a>
-            <a class="nav_link" href="/Home/Notifications">  <img src="/Files/GetJpgFile?fileString=Content/css/bell.png"><div class="hiding_elems_left"> Уведомления</div></a>
-            <a class="nav_link" href="/Home/Messanges">  <img src="/Files/GetJpgFile?fileString=Content/css/message.png"><div class="hiding_elems_left"> Сообщения</div></a>
-            <a class="nav_link" href="#save">  <img src="/Files/GetJpgFile?fileString=Content/css/bookmark.png"><div class="hiding_elems_left"> Сохранённое</div></a>
+            <a class="nav_link" href="/Home/Notifications">  <img src="/Files/GetJpgFile?fileString=Content/css/bell.png">Уведомления</a>
+            <a class="nav_link" href="/Home/Messanges">  <img src="/Files/GetJpgFile?fileString=Content/css/message.png">Сообщения</a>
+            <a class="nav_link" href="#save">  <img src="/Files/GetJpgFile?fileString=Content/css/bookmark.png">Сохранённое</a>
             @if (ViewBag.IsAuthorized)
             {
                 <a class="nav_link" href="/Auth/Profile">
@@ -47,7 +49,7 @@
             <a class="nav_link" href="#customization">  <img src="/Files/GetJpgFile?fileString=Content/css/settings.png"> Настройки</a>
         </nav>
 
-        <button class="button-hide" id="hideBtnLeft"><span>Скрыть</span></button>
+        <button class="button-hide" onclick="closeMenu();"><span>Скрыть</span></button>
         @if (ViewBag.IsAuthorized)
         {
         <button onclick="window.location.href='/Files/UploadChallengePage'" class="button-download"><img style="height: 30px; width: 30px; " src="/Files/GetJpgFile?fileString=Content/css/download.png"> <span>Загрузить</span> </button>
@@ -55,12 +57,12 @@
     </div>
 
     <div class="content">
+        <button class="button-hide2" onclick="openMenu();"><span>Показать</span></button>
         @RenderBody()
     </div>
 
 
 
-    <button class="button-hide" id="showBtnRight"><span>Скрыть</span></button>
     <div class="topics">
         <h2 class="topics_title">Актуальные темы</h2>
         <nav class="topics_nav">
@@ -71,7 +73,6 @@
             <a class="topics_link" href="#topics_link">Темы</a>
             <a class="topics_link" href="#topics_link">Челленджей</a>
         </nav>
-        <button class="button-hide" id="hideBtnRight"><span>Показать</span></button>
     </div>
 
     <script src="/Files/GetJsFile?fileString=Content/main.js"></script>

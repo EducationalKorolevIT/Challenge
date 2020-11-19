@@ -9,25 +9,30 @@
 
 /* Container = body */
 body {
-    font-family: 'Kaushan Script', cursive;
     font-family: 'Nunito', sans-serif;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
 }
 
-/* !!!Challenge!!! */
 /* Menu */
 .menu {
+    position: fixed;
+    padding-top: 30px;
     background-color: #063852;
+    height: 100%;
+    width: 285px;
+    min-width: 285px;
+    max-width: 285px;
+    /*
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     padding: 0 50px;
-    padding-top: 30px;
-    min-width: 350px;
-    max-width: 350px;
+    width: 30%;
+    padding-top: 30px;*/
+    z-index: 1000;
 }
 
 /* Logo menu */
@@ -107,10 +112,11 @@ body {
     }
 
 
-
 /* Button menu */
 
+/* Button hide */
 .button-hide {
+    font-family: 'Nunito', sans-serif;
     margin-top: 30px;
     margin-left: 50px;
     background: transparent;
@@ -119,6 +125,7 @@ body {
     cursor: pointer;
     font-size: 30px;
     transition: .3s;
+    z-index: 999;
 }
 
     .button-hide span {
@@ -162,9 +169,69 @@ body {
         transform: translate(-5px, -5px);
     }
 
+/* Button hide 2 */
+.button-hide2 {
+    font-family: 'Nunito', sans-serif;
+    margin-top: 30px;
+    margin-left: 50px;
+    background: transparent;
+    border-width: 0;
+    position: fixed;
+    cursor: pointer;
+    font-size: 30px;
+    transition: .3s;
+    z-index: 999;
+    opacity: 0.3;
+}
 
+    .button-hide2 span {
+        display: block;
+        position: relative;
+        z-index: 3;
+        background: #170250;
+        color: #fffbb0;
+        padding: 0 30px;
+        line-height: 40px;
+    }
+
+    .button-hide2:before {
+        content: "";
+        position: absolute;
+        width: calc(100% + 5px);
+        height: calc(100% + 5px);
+        left: -5px;
+        top: -5px;
+        background: #ff4675;
+        z-index: 1;
+        transition: .4s ease-out;
+    }
+
+    .button-hide2:after {
+        content: "";
+        position: absolute;
+        width: calc(100% + 5px);
+        height: calc(100% + 5px);
+        right: -5px;
+        bottom: -5px;
+        background: #f0910f;
+        transition: .4s ease-out .1s;
+    }
+
+    .button-hide2:hover:before {
+        transform: translate(5px, 5px);
+    }
+
+    .button-hide2:hover:after {
+        transform: translate(-5px, -5px);
+    }
+
+
+/* Button download */
 
 .button-download {
+    height: 30px;
+    width: 30px;
+    font-family: 'Nunito', sans-serif;
     margin-top: 30px;
     width: 80%;
     margin-right: 10%;
@@ -184,7 +251,6 @@ body {
     border: none;
     transition: .2s linear;
 }
-
 
     .button-download:hover {
         background: #200b5a;
@@ -207,9 +273,10 @@ body {
         padding-right: 10px;
     }
 
-
-
 /* Menu end */
+
+
+
 
 
 
@@ -219,39 +286,40 @@ body {
     left: 400px;
     padding-right: 800px;
     background-color: #1072a7;
-    height: auto;
-    min-height: 2500px;
+    height: 2500px;
     width: 100%;
     flex: 0 0 auto;
-    padding: 0 50px;
+    /*padding: 0 50px;*/
     background-image: url(/Files/GetJpgFile?fileString=Content/css/img1.JPG);
     background-size: 100%;
 }
-/*
+
 .backgrr {
     position: fixed;
     left: 400px;
     padding-right: 800px;
-
     background-color: black;
     height: 2500px;
     width: 100%;
     flex: 0 0 auto;
     padding: 0 50px;
-
     opacity: 0.7;
 }
-*/
+
 .icon {
     position: fixed;
-    top: 200px;
-    right: 500px;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: space-between;
     cursor: pointer;
+    top: 200px;
+    left: 1110px;
+    margin-top: 40px;
+    margin-right: 30px;
 }
+
 /* Content end */
+
+
 
 
 
@@ -267,16 +335,18 @@ body {
     padding-top: 30px;
     max-width: 300px;
     min-width: 300px;
+    font-family: 'Nunito', sans-serif;
 }
 
 .topics_title {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 700;
     color: #E6DF44;
 }
 
 .topics_nav {
-    font-size: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 32px;
     padding-top: 15px;
     line-height: 1.5;
 }
@@ -302,7 +372,9 @@ body {
 /* Topics end*/
 
 
-
+.icon_hover{
+    margin: 10px;
+}
 
 
 /* */

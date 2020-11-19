@@ -27,35 +27,38 @@
 
 @if (ViewBag.IsAuthorized)
 {
-<ul style="list-style: none;width: 70%;">
+<ul style="list-style: none;width: 100%;">
     @for (int i = 0; i < ViewBag.challenges.Length; i++)
     {
         Challenges.Models.Challenges_Table ch = ViewBag.challenges[i];
         Challenges.Models.Responses_Table resp = ViewBag.responses[i];
-        <li style="width: 100%;">
-            <div style="background: rgb(255, 255, 255);width:100%;">
-                Отправленное<br />
-                @ch.Description<br />
-                @Challenges.Models.SharedObjects.database.Users.FirstOrDefault(e => e.Id == ch.Id_User_From).Login<br />
-                <video style="border-radius: 10px" controls src="/Files/GetChallengeVideoFile?videoId=@ch.Id"></video><br />
-                @if (ch.Status == 0)
-                {
-                    <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
-                }
-                else if (ch.Status == 1)
-                {
-                    <p>Уже есть ответ на челлендж</p>
-                }
-                @if (ch.Status == 0)
-                {
-                    <a href="/Files/CancelChallengePage?chId=@ch.Id">Отклонить</a>
-                }
-                else if (ch.Status == 2)
-                {
-                    <p>Челлендж отклонён</p>
-                }
+    <li style="width: 100%;">
+        <div style="display: flex; flex-direction: column; background-color: wheat; width: 100%;">
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <div style="background-color: red; width: 16px; height: 16px;"></div>
+                @Challenges.Models.SharedObjects.database.Users.FirstOrDefault(e => e.Id == ch.Id_User_From).Login
             </div>
-        </li>
+            <hr />
+            @ch.Description<br />
+            <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@ch.Id"></video><br />
+            @if (ch.Status == 0)
+            {
+                <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
+            }
+            else if (ch.Status == 1)
+            {
+                <p>Уже есть ответ на челлендж</p>
+            }
+            @if (ch.Status == 0)
+            {
+                <a href="/Files/CancelChallengePage?chId=@ch.Id">Отклонить</a>
+            }
+            else if (ch.Status == 2)
+            {
+                <p>Челлендж отклонён</p>
+            }
+        </div>
+    </li>
     }
 </ul>
 }
