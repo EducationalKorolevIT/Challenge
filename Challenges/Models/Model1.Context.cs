@@ -29,5 +29,6 @@ namespace Challenges.Models
         public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Challenges_Table> Challenges_Table { get; set; }
         public virtual DbSet<Responses_Table> Responses_Table { get; set; }
+        public virtual DbSet<HighestReputation> HighestReputation { get; set; }
     }
 }

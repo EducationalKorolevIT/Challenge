@@ -12,6 +12,7 @@
         <AssociationConnector Association="ChallengesDBModel.FK_Challenges_User_To1" />
         <EntityTypeShape EntityType="ChallengesDBModel.Responses_Table" Width="1.5" PointX="6.125" PointY="1.5" />
         <AssociationConnector Association="ChallengesDBModel.FK_Responses_Table_To_Challenge" />
+        <EntityTypeShape EntityType="ChallengesDBModel.HighestReputation" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

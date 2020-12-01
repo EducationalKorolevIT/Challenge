@@ -49,5 +49,25 @@ namespace Challenges.Models
                 return null;
             }
         }
+
+        public class BoxLengthFirst : Comparer<Users>
+        {
+            // Compares by Length, Height, and Width.
+            public override int Compare(Users x, Users y)
+            {
+                if (x.Reputation>y.Reputation)
+                {
+                    return -1;
+                }
+                else if (x.Reputation>y.Reputation)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }

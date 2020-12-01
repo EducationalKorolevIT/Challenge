@@ -41,6 +41,19 @@
           <Property Name="CreateDate" Type="date" Nullable="false" />
           <Property Name="Reputation" Type="int" Nullable="false" />
         </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "ChallengesDB.dbo.HighestReputation" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="HighestReputation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Reputation" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Nickname" Type="text" />
+          <Property Name="Reputation" Type="int" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Challenges_User_From">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Challenges_Table" Type="Self.Challenges_Table" Multiplicity="*" />
@@ -82,6 +95,14 @@
           <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Responses_Table" EntityType="Self.Responses_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HighestReputation" EntityType="Self.HighestReputation" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HighestReputation].[Id] AS [Id], 
+    [HighestReputation].[Login] AS [Login], 
+    [HighestReputation].[Nickname] AS [Nickname], 
+    [HighestReputation].[Reputation] AS [Reputation]
+    FROM [dbo].[HighestReputation] AS [HighestReputation]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Challenges_User_From" Association="Self.FK_Challenges_User_From">
             <End Role="Users" EntitySet="Users" />
             <End Role="Challenges_Table" EntitySet="Challenges_Table" />
@@ -116,6 +137,7 @@
             <End Role="Challenges_Table" EntitySet="Challenges_Table" />
             <End Role="Responses_Table" EntitySet="Responses_Table" />
           </AssociationSet>
+          <EntitySet Name="HighestReputation" EntityType="ChallengesDBModel.HighestReputation" />
         </EntityContainer>
         <EntityType Name="Users">
           <Key>
@@ -195,6 +217,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="HighestReputation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Login" />
+            <PropertyRef Name="Reputation" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Reputation" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -237,6 +270,16 @@
             <EntityTypeMapping TypeName="ChallengesDBModel.Responses_Table">
               <MappingFragment StoreEntitySet="Responses_Table">
                 <ScalarProperty Name="Id_Challenges_Table" ColumnName="Id_Challenges_Table" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HighestReputation">
+            <EntityTypeMapping TypeName="ChallengesDBModel.HighestReputation">
+              <MappingFragment StoreEntitySet="HighestReputation">
+                <ScalarProperty Name="Reputation" ColumnName="Reputation" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

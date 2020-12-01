@@ -1,11 +1,24 @@
 ﻿<!--удалите это потом-->
+<div class="bxslider">
+    @{ 
+        List<Challenges.Models.Challenges_Table> chs = Challenges.Models.SharedObjects.database.Challenges_Table.ToList();
+        for(int i=chs.Count-1;i>=0;i--)
+        {
+        <div style="display: flex;flex-direction: column;padding-top: 100px;">
+            @{ var from = chs[i].Users; }  
+            @{ var to = chs[i].Users1; }  
+            <span>От: @(from.Nickname??from.Login)</span>
+            <span>Кому: @(to.Nickname??to.Login)</span>
+            <span>@chs[i].Description</span>
+            <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
+        </div>
+        }
+    }
+</div>
+
 <div class="icon">
     <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/like.png"> <br>
     <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/comments.png"> <br>
     <img class="icon_hover" id="image" onclick="music_off()" src="/Files/GetJpgFile?fileString=Content/css/audio.png"> <br>
     <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/more.png"> <br>
-</div>
-
-<div>
-    тут был контент<br/>
 </div>

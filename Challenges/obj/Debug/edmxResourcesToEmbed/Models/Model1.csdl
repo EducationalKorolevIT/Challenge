@@ -17,6 +17,7 @@
       <End Role="Challenges_Table" EntitySet="Challenges_Table" />
       <End Role="Responses_Table" EntitySet="Responses_Table" />
     </AssociationSet>
+    <EntitySet Name="HighestReputation" EntityType="ChallengesDBModel.HighestReputation" />
   </EntityContainer>
   <EntityType Name="Users">
     <Key>
@@ -96,4 +97,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="HighestReputation">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Reputation" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Reputation" Type="Int32" Nullable="false" />
+  </EntityType>
 </Schema>

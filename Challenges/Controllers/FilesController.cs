@@ -63,8 +63,6 @@ namespace Challenges.Controllers
 
         async public Task<ActionResult> GetChallengeVideoFile(long videoId)
         {
-            Users user = (Users)Session["User"];
-            if (SharedObjects.CheckNonAuthorized(user)) return new HttpUnauthorizedResult();
             string file_path = Server.MapPath("~/Files/Challenges/" + videoId + ".mp4");
             string file_type = "video/mp4";
             string file_name = videoId + ".mp4";
@@ -73,8 +71,6 @@ namespace Challenges.Controllers
 
         async public Task<ActionResult> GetChallengeResponseVideoFile(long videoId)
         {
-            Users user = (Users)Session["User"];
-            if (SharedObjects.CheckNonAuthorized(user)) return new HttpUnauthorizedResult();
             string file_path = Server.MapPath("~/Files/Responses/" + videoId + ".mp4");
             string file_type = "video/mp4";
             string file_name = videoId + ".mp4";
