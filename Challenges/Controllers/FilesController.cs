@@ -120,7 +120,7 @@ namespace Challenges.Controllers
                 }
             }
 
-            return Redirect("/Files/UploadChallenge");
+            return Redirect("/Files/UploadChallengePage");
         }
 
         [HttpPost]

@@ -13,7 +13,7 @@
 
     List<Challenges.Models.Users> outd = new List<Challenges.Models.Users>();
 
-    for(int i=0;i < (ViewBag.HighestReputationList.Count>10 ? 10: ViewBag.HighestReputationList.Count); i++)
+    for (int i = 0; i < (ViewBag.HighestReputationList.Count > 10 ? 10 : ViewBag.HighestReputationList.Count); i++)
     {
         outd.Add(ViewBag.HighestReputationList[i]);
     }
@@ -21,6 +21,7 @@
     ViewBag.HighestReputationList = outd;
 }
 
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
@@ -34,6 +35,8 @@
     <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.fitvids.js"></script>
     <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
 
+    <script src="main.js"></script>
+
     <title>
         Главная
     </title>
@@ -42,14 +45,18 @@
 
 <body>
     <div class="menu">
-        <h1 class="logo">Logo</h1>
+        <h1 class="logo" href="#main">Logo</h1>
         <nav class="nav">
-            <a class="nav_link" href="/Home/Index">  <img src="/Files/GetJpgFile?fileString=Content/css/house_main.PNG">Главная</a>
-            <a class="nav_link" href="/Home/CompetitorsIncoming">   <img src="/Files/GetJpgFile?fileString=Content/css/devil(2).png">Соперники</a>
-            <a class="nav_link" href="#search">  <img src="/Files/GetJpgFile?fileString=Content/css/loupe.png"><div class="hiding_elems_left"> Поиск</div></a>
-            <a class="nav_link" href="/Home/Notifications">  <img src="/Files/GetJpgFile?fileString=Content/css/bell.png">Уведомления</a>
-            <a class="nav_link" href="/Home/Messanges">  <img src="/Files/GetJpgFile?fileString=Content/css/message.png">Сообщения</a>
-            <a class="nav_link" href="#save">  <img src="/Files/GetJpgFile?fileString=Content/css/bookmark.png">Сохранённое</a>
+            <a class="nav_link" href="/Home/Index">
+                <img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main2.png">
+                <img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main.png">
+                <div>Главная</div>
+            </a>
+            <a class="nav_link" href="/Home/CompetitorsIncoming"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals3.png"><div>Соперники</div></a>
+            <a class="nav_link" href="#search"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/search2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/search.png"><div>Поиск</div></a>
+            <a class="nav_link" href="#notifications"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/notifications2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/notifications.png"><div>Уведомления</div></a>
+            <a class="nav_link" href="#messanges"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/messanges2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/messanges.png"><div>Сообщения</div></a>
+            <a class="nav_link" href="#save"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/save2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/save.png"><div>Сохранённое</div></a>
             @if (ViewBag.IsAuthorized)
             {
                 <a class="nav_link" href="/Auth/Profile">
@@ -57,53 +64,49 @@
                     {
                         <img src="/Files/GetAvatar" height="32" style="border-radius: 24px; margin-top: 8px;" />
                     }@ViewBag.User.Nickname
-                    <p style="font-size: 8px">Репутация: @ViewBag.Reputation</p>
+                    <p style="font-size: 8px;margin-right: 30px;">Репутация: @ViewBag.Reputation</p>
                 </a>
             }
             else
             {
-                <button class="nav_link" onclick="window.open('/Auth/Main','_blank')">  <img src="/Files/GetJpgFile?fileString=Content/css/user.png"> Войти</button>
+                <a class="nav_link" href="/Auth/Main"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/profile2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/profile.png"><div>Профиль</div></a>
             }
-            <a class="nav_link" href="#customization">  <img src="/Files/GetJpgFile?fileString=Content/css/settings.png"> Настройки</a>
+        <button type="submit" class="button-download" onclick="window.location='/Files/UploadChallengePage'"><img src="/Files/GetJpgFile?fileString=Content/css/icon_menu/download.png"> <span>Загрузить</span> </button>
         </nav>
-
-        @if (ViewBag.IsAuthorized)
-        {
-            <button onclick="window.location.href='/Files/UploadChallengePage'" class="button-download"><img style="height: 30px; width: 30px; " src="/Files/GetJpgFile?fileString=Content/css/download.png"> <span>Загрузить</span> </button>
-        }
     </div>
 
     <div class="content">
         <button class="button-open-hide-menu" onclick="closeOpenMenu();"><span class="arrow_menu"><</span></button>
-        <button class="button-hide-open-topics" onclick="closeOpenTopics();"><span class="arrow_topics">></span></button>
         @RenderBody()
+        <button class="button-hide-open-topics" onclick="closeOpenTopics();"><span class="arrow_topics">></span></button>
     </div>
-
-
 
     <div class="topics">
-        <h2 class="topics_title">Актуальные темы</h2>
+        <h2 onclick="click_topics" class="topics_title">Актуальные темы</h2>
         <nav class="topics_nav">
-            <a class="topics_link" href="#topics_link">какие</a>
-            <a class="topics_link" href="#topics_link">темы</a>
-            <a class="topics_link" href="#topics_link">????????????</a>
+            <a class="topics_link" href="#topics_link">Здесь</a>
+            <a class="topics_link" href="#topics_link">Будут</a>
+            <a class="topics_link" href="#topics_link">Расположены</a>
+            <a class="topics_link" href="#topics_link">Актуальные</a>
+            <a class="topics_link" href="#topics_link">Темы</a>
+            <a class="topics_link" href="#topics_link">Челленджей</a>
         </nav>
 
-        <h2 class="topics_title">Человеки с высшей репутацией</h2>
-        <nav class="topics_nav">
-            @foreach(Challenges.Models.Users rep in ViewBag.HighestReputationList)
-            {
-                <span>@(rep.Nickname??rep.Login)</span><br />
-            }
+        <nav class="buzzword">
+            <a class="buzzword_link" href="#buzzword_link">Условия предоставления услуг</a>
+            <a class="buzzword_link" href="#buzzword_link">Политика конфиденциальности</a>
+            <a class="buzzword_link" href="#buzzword_link">Политика в отношении файлов cookie</a>
+            <a class="buzzword_link" href="#buzzword_link">Информация о рекламе</a>
+            <a class="buzzword_link" href="#buzzword_link">Ещё</a>
+            <a class="buzzword_link" href="#buzzword_link">© Challenge, Inc., 2020.</a>
         </nav>
     </div>
 
-    <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
-
     <div id="profile" class="popup">
+        <a href="" class="popup_area"></a>
         <div class="popup_body">
             <div class="popup_content">
-                <button class="button-close-popup">X</button>
+                <a href="#main" class="popup_close">X</a>
                 <div class="popup_title">Присоединяйся к Challenge прямо сейчас!</div>
                 <div class="popup_text">Блалалала</div>
             </div>
@@ -112,3 +115,4 @@
 
 </body>
 </html>
+<!--  -->

@@ -11,34 +11,36 @@
     }
 </style>
 
-<p>
-    <h1>Настройки профиля</h1>
-</p>
 @if (ViewBag.IsAuthorized)
 {
-<form method="post" enctype="multipart/form-data" action="/Files/UpdateProfile">
-    <table style="width: 100%; border: 1px solid black;" border="1">
-        <tr>
-            <td>Никнейм</td>
-            <td><input type="text" class="input_box" value="@ViewBag.User.Nickname" name="nickname" /></td>
-        </tr>
-        <tr>
-            <td>Аватарка</td>
-            <td><input type="file" class="input_box" name="avatarupload"/></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit"/></td>
-        </tr>
-    </table>
-</form>
-<form method="get" action="/Auth/Exit">
-    <input type="submit" value="Выйти" style="background-color: red;" />
-</form>
-<form method="get" action="/Auth/SaveToCookie">
-    <input type="submit" value="Загрузить в Cookie" />
-</form>
+    <div style="position: absolute;left: 500px; right: 500px;top: 50px;background-color: darkgray;border-radius: 15px;">
+        <h1>Настройки профиля</h1>
+        <br />
+        <form method="post" enctype="multipart/form-data" action="/Files/UpdateProfile">
+            <div>Никнейм</div>
+            <div><input type="text" class="input_box" value="@ViewBag.User.Nickname" name="nickname" /></div>
+            <br />
+
+            <div>Аватарка</div>
+            <div><input type="file" class="input_box" name="avatarupload" /></div>
+            <br />
+
+            <div colspan="2"><input type="submit" /></div>
+        </form>
+        <br />
+        <form method="get" action="/Auth/Exit" style="margin-left: 30px;">
+            <input type="submit" value="Выйти" style="background-color: red;" />
+        </form>
+        <form method="get" action="/Auth/SaveToCookie" style="margin-left: 30px;">
+            <input type="submit" value="Загрузить в Cookie" />
+        </form>
+    </div>
 }
 else
 {
-<p>Упс, произошла ошибка. Возможно, вы не авторизованы?</p>
+    <div style="position: absolute;left: 500px; right: 500px;top: 50px;background-color: darkgray;border-radius: 5px;">
+        <h1>Настройки профиля</h1>
+        <br />
+        <p>Упс, произошла ошибка. Возможно, вы не авторизованы?</p>
+    </div>
 }

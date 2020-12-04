@@ -8,19 +8,6 @@ let isHideTopics = false;
 
 
 
-
-
-/* CONTENT */
-
-/* Change icon music */
-function music_off(image) {
-    if (document.getElementById("image").src.indexOf("css/audio_off.png")>0)
-            {document.getElementById("image").src="css/audio.png"}
-        else
-            {document.getElementById("image").src="css/audio_off.png"}
-}
-
-/* Bxslider */
 jQuery(document).ready(function () {
     jQuery('.bxslider').bxSlider({
         /* General setting */
@@ -46,7 +33,7 @@ jQuery(document).ready(function () {
         swipeThreshold: 50,
 
         /* Control element */
-        controls: true,
+        controls: false,
         nextText: '',
         nextSelector: null,
         prevText: '',
@@ -55,7 +42,7 @@ jQuery(document).ready(function () {
 
         /* Automatic slide show yeeeep */
         auto: true,
-        pause: 10000,
+        pause: 2000,
         autoStart: true,
         autoDirection: 'next',
         autoHover: false,
@@ -71,21 +58,31 @@ jQuery(document).ready(function () {
     });
 });
 
+
+
+/* CONTENT */
+
+/* Change icon music */
+function sound_off(sound) {
+    if (document.getElementById("sound").src.indexOf("/Files/GetJpgFile?fileString=Content/css/icon_content/sound_off.png") > 0) { document.getElementById("sound").src = "/Files/GetJpgFile?fileString=Content/css/icon_content/sound.png" }
+    else { document.getElementById("sound").src = "/Files/GetJpgFile?fileString=Content/css/icon_content/sound_off.png" }
+}
+
 /* Open/Close relevant menu */
 function closeOpenMenu() {
     let top = document.querySelector('.arrow_menu');
 
-    if(isHideTopics == false){
+    if (isHideTopics == false) {
         isHideTopics = true;
         $('.menu').animate({
-            left: '-350px'
+            left: '-300px'
         }, 200);
 
         $('body').animate({
             right: '0px'
         }, 400);
 
-        top.innerHTML = "<";
+        top.innerHTML = ">";
     } else {
         isHideTopics = false;
         $('.menu').animate({
@@ -95,7 +92,7 @@ function closeOpenMenu() {
             right: '0px'
         }, 400);
 
-        top.innerHTML = ">";
+        top.innerHTML = "<";
     }
 };
 
@@ -105,10 +102,10 @@ function closeOpenMenu() {
 function closeOpenTopics() {
     let top = document.querySelector('.arrow_topics');
 
-    if(isHideTopics == false){
+    if (isHideTopics == false) {
         isHideTopics = true;
         $('.topics').animate({
-            right: '-350px'
+            right: '-300px'
         }, 200);
 
         $('body').animate({

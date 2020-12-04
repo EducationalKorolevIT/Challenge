@@ -30,7 +30,7 @@ body {
 .about_us {
     background-size: 100%;
     background-color:rgba(0,0,0,.3);
-    background-image: url(css/vdnh2.JPG);
+    background-image: url(/Files/GetJpgFile?fileString=Content/css/vdnh2.JPG);
     position: fixed;
     top: 0;
     left: 0;
