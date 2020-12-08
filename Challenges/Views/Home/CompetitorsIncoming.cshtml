@@ -27,12 +27,12 @@
 
 @if (ViewBag.IsAuthorized)
 {
-<ul style="list-style: none;width: 100%;">
+<ul style="list-style: none;position: absolute;left: 400px;right: 400px;">
     @for (int i = 0; i < ViewBag.challenges.Length; i++)
     {
         Challenges.Models.Challenges_Table ch = ViewBag.challenges[i];
         Challenges.Models.Responses_Table resp = ViewBag.responses[i];
-    <li style="width: 100%;">
+    <li style="width: 100%;margin-bottom: 50px;">
         <div style="display: flex; flex-direction: column; background-color: wheat; width: 100%;">
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <div style="background-color: red; width: 16px; height: 16px;"></div>
@@ -48,6 +48,7 @@
             else if (ch.Status == 1)
             {
                 <p>Уже есть ответ на челлендж</p>
+                <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeResponseVideoFile?videoId=@resp.Id"></video><br />
             }
             @if (ch.Status == 0)
             {

@@ -1,20 +1,35 @@
 ﻿<!--удалите это потом-->
-<div class="bxslider">
+<ul class="bxslider">
     @{ 
         List<Challenges.Models.Challenges_Table> chs = Challenges.Models.SharedObjects.database.Challenges_Table.ToList();
         for(int i=chs.Count-1;i>=0;i--)
         {
-        <div style="display: flex;flex-direction: column;">
+        <li style="display: flex;flex-direction: column;">
             @{ var from = chs[i].Users; }  
             @{ var to = chs[i].Users1; }  
-            <span>От: @(from.Nickname??from.Login)</span>
-            <span>Кому: @(to.Nickname??to.Login)</span>
-            <span>@chs[i].Description</span>
+            <div class="description">
+                <nav class="description_nav">
+                    <div class="description_text">
+                        От
+                        <p class="description_text_example" href="">@(from.Nickname??from.Login)</p>
+                    </div>
+
+                    <div class="description_text">
+                        Кому
+                        <p class="description_text_example" href="">@(to.Nickname??to.Login)</p>
+                    </div>
+
+                    <div class="description_text">
+                        Описание
+                        <p class="description_text_example" href=""> @(chs[i].Description)</p>
+                    </div>
+                </nav>
+            </div>
             <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
-        </div>
+        </li>
         }
     }
-</div>
+</ul>
 
 <div class="icon">
     <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/icon_content/like.png"> <br>

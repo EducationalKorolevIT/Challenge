@@ -1,44 +1,21 @@
 ﻿<!DOCTYPE html>
-
-@{
-    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
-    if (user.Nickname == null) { user.Nickname = user.Login; }
-    ViewBag.User = user;
-    ViewBag.IsAuthorized = Session["User"] != null;
-    ViewBag.IsAvatarExist = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
-    ViewBag.Reputation = user.Reputation;
-
-    ViewBag.HighestReputationList = Challenges.Models.SharedObjects.database.Users.ToList();
-    ViewBag.HighestReputationList.Sort(new Challenges.Models.SharedObjects.BoxLengthFirst());
-
-    List<Challenges.Models.Users> outd = new List<Challenges.Models.Users>();
-
-    for (int i = 0; i < (ViewBag.HighestReputationList.Count > 10 ? 10 : ViewBag.HighestReputationList.Count); i++)
-    {
-        outd.Add(ViewBag.HighestReputationList[i]);
-    }
-
-    ViewBag.HighestReputationList = outd;
-}
-
-<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/main.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
 
-    <link href="/Files/GetCssFile?fileString=Content/bxslider/jquery.bxslider.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.bxslider.min.js"></script>
-    <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.easing.1.3.js"></script>
-    <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.fitvids.js"></script>
-    <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
-
     <script src="main.js"></script>
+    <link href="~/Content/bxslider/jquery.bxslider.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="~/Content/bxslider/jquery.bxslider.min.js"></script>
+    <script src="~/Content/bxslider/jquery.easing.1.3.js"></script>
+    <script src="~/Content/bxslider/jquery.fitvids.js"></script>
+
+    <script src="~/Content/main.js"></script>
 
     <title>
-        Главная
+        Главная/Challenge
     </title>
 
 </head>
@@ -47,58 +24,108 @@
     <div class="menu">
         <h1 class="logo" href="#main">Logo</h1>
         <nav class="nav">
-            <a class="nav_link" href="/Home/Index">
-                <img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main2.png">
-                <img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main.png">
+            <a class="nav_link" href="#main">
+                <img class="hover_img" src="~/Content/css/icon_menu/main2.png">
+                <img class="hide_img" src="~/Content/css/icon_menu/main.png">
                 <div>Главная</div>
             </a>
-            <a class="nav_link" href="/Home/CompetitorsIncoming"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals3.png"><div>Соперники</div></a>
-            <a class="nav_link" href="#search"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/search2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/search.png"><div>Поиск</div></a>
-            <a class="nav_link" href="#notifications"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/notifications2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/notifications.png"><div>Уведомления</div></a>
-            <a class="nav_link" href="#messanges"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/messanges2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/messanges.png"><div>Сообщения</div></a>
-            <a class="nav_link" href="#save"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/save2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/save.png"><div>Сохранённое</div></a>
-            @if (ViewBag.IsAuthorized)
-            {
-                <a class="nav_link" href="/Auth/Profile">
-                    @if (ViewBag.IsAvatarExist)
-                    {
-                        <img src="/Files/GetAvatar" height="32" style="border-radius: 24px; margin-top: 8px;" />
-                    }@ViewBag.User.Nickname
-                    <p style="font-size: 8px;margin-right: 30px;">Репутация: @ViewBag.Reputation</p>
-                </a>
-            }
-            else
-            {
-                <a class="nav_link" href="/Auth/Main"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/profile2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/profile.png"><div>Профиль</div></a>
-            }
-        <button type="submit" class="button-download" onclick="window.location='/Files/UploadChallengePage'"><img src="/Files/GetJpgFile?fileString=Content/css/icon_menu/download.png"> <span>Загрузить</span> </button>
+            <a class="nav_link" href="#rivals"><img class="hover_img" src="~/Content/css/icon_menu/rivals2.png"><img class="hide_img" src="~/Content/css/icon_menu/rivals3.png"><div>Соперники</div></a>
+            <a class="nav_link" href="#search"><img class="hover_img" src="~/Content/css/icon_menu/search2.png"><img class="hide_img" src="~/Content/css/icon_menu/search.png"><div>Поиск</div></a>
+            <a class="nav_link" href="#notifications"><img class="hover_img" src="~/Content/css/icon_menu/notifications2.png"><img class="hide_img" src="~/Content/css/icon_menu/notifications.png"><div>Уведомления</div></a>
+            <a class="nav_link" href="#messanges"><img class="hover_img" src="~/Content/css/icon_menu/messanges2.png"><img class="hide_img" src="~/Content/css/icon_menu/messanges.png"><div>Сообщения</div></a>
+            <a class="nav_link" href="#save"><img class="hover_img" src="~/Content/css/icon_menu/save2.png"><img class="hide_img" src="~/Content/css/icon_menu/save.png"><div>Сохранённое</div></a>
+            <a class="nav_link" href="#profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>Профиль</div></a>
+            <a class="nav_link" href="#customization"><img class="hover_img" src="~/Content/css/icon_menu/customization2.png"><img class="hide_img" src="~/Content/css/icon_menu/customization.png"><div>Настройки</div></a>
         </nav>
+
+        <button type="submit" class="button-download"><img class="hide_img_download" src="~/Content/css/icon_menu/download.png"><img class="hover_img_download" src="~/Content/css/icon_menu/download2.png"> <span>Загрузить</span> </button>
+
     </div>
 
     <div class="content">
         <button class="button-open-hide-menu" onclick="closeOpenMenu();"><span class="arrow_menu"><</span></button>
-        @RenderBody()
+        <div class="advertising">
+            <p class="advertising_text">
+                Здесь могла бы быть ваша реклама :) <br />
+                по вопросам пишите tg: @("@")zvendra
+            </p>
+        </div>
+
+
+        <script>
+    jQuery(document).ready(function () {
+                jQuery('.bxslider').bxSlider({
+                    /* General setting */
+                    mode: 'vertical',
+                    speed: 500,
+                    slideMargin: 0,
+                    easing: 'jswing',
+                    captions: true,
+                    video: true,
+                    useCSS: false,
+                    adaptiveHeight: true,
+                    adaptiveHeight: 500,
+                    preloadImages: 'all',
+
+                    /* Slider */
+                    pager: false,
+                    pagerType: 'full',
+
+                    /* For touch screen */
+                    touchEnabled: true,
+                    oneToOneTouch: true,
+                    preventDefaultSwipeY: false,
+                    swipeThreshold: 50,
+
+                    /* Control element */
+                    controls: false,
+                    nextText: '',
+                    nextSelector: null,
+                    prevText: '',
+                    prevSelector: null,
+                    autoControls: false,
+
+                    /* Automatic slide show yeeeep */
+                    auto: true,
+                    pause: 2000,
+                    autoStart: true,
+                    autoDirection: 'next',
+                    autoHover: false,
+                    autoDelay: 200,
+
+                    /* Carousel, hmmm */
+                    minSlides: 1,
+                    maxSlides: 1,
+                    moveSlides: 0,
+                    slideWidth: 0,
+
+
+                });
+            });</script>
+
+        @RenderBody();
+
         <button class="button-hide-open-topics" onclick="closeOpenTopics();"><span class="arrow_topics">></span></button>
     </div>
 
     <div class="topics">
         <h2 onclick="click_topics" class="topics_title">Актуальные темы</h2>
         <nav class="topics_nav">
-            <a class="topics_link" href="#topics_link">Здесь</a>
-            <a class="topics_link" href="#topics_link">Будут</a>
-            <a class="topics_link" href="#topics_link">Расположены</a>
-            <a class="topics_link" href="#topics_link">Актуальные</a>
-            <a class="topics_link" href="#topics_link">Темы</a>
-            <a class="topics_link" href="#topics_link">Челленджей</a>
+            <a class="topics_link" href="#">Здесь</a>
+            <a class="topics_link" href="#">Будут</a>
+            <a class="topics_link" href="#">Расположены</a>
+            <a class="topics_link" href="#">Актуальные</a>
+            <a class="topics_link" href="#">Темы</a>
+            <a class="topics_link" href="#">Челленджей</a>
         </nav>
 
         <nav class="buzzword">
-            <a class="buzzword_link" href="#buzzword_link">Условия предоставления услуг</a>
-            <a class="buzzword_link" href="#buzzword_link">Политика конфиденциальности</a>
-            <a class="buzzword_link" href="#buzzword_link">Политика в отношении файлов cookie</a>
-            <a class="buzzword_link" href="#buzzword_link">Информация о рекламе</a>
-            <a class="buzzword_link" href="#buzzword_link">Ещё</a>
-            <a class="buzzword_link" href="#buzzword_link">© Challenge, Inc., 2020.</a>
+            <a class="buzzword_link" href="#">Условия предоставления услуг</a>
+            <a class="buzzword_link" href="#">Политика конфиденциальности</a>
+            <a class="buzzword_link" href="#">Политика в отношении файлов cookie</a>
+            <a class="buzzword_link" href="#">Информация о рекламе</a>
+            <a class="buzzword_link" href="#">Ещё</a>
+            <a class="buzzword_link" href="#">© Challenge, Inc., 2020.</a>
         </nav>
     </div>
 
@@ -106,12 +133,40 @@
         <a href="" class="popup_area"></a>
         <div class="popup_body">
             <div class="popup_content">
-                <a href="#main" class="popup_close">X</a>
-                <div class="popup_title">Присоединяйся к Challenge прямо сейчас!</div>
-                <div class="popup_text">Блалалала</div>
+                <a href="#main" class="popup_close"><img class="cancel_hide" src="~/Content/css/icon_popup/cancel.png"> <img class="cancel_hover" src="~/Content/css/icon_popup/cancel2.png"></a>
+
+                <div class="popup_title">
+                    <p>Присоединяйся к Challenge</p>
+                    <p>прямо сейчас!</p>
+                </div>
+
+                <form action="" class="form_login">
+
+                    <div class="line">
+                        <label for="login">Логин</label>
+                        <input id="login" class="enter" type="text" class="input_box" />
+                    </div>
+
+                    <div class="line">
+                        <label for="password">Пароль</label>
+                        <input id="password" class="enter" type="password" class="input_box" />
+                    </div>
+
+                    <input type="checkbox" id="custom-checkbox">
+                    <label for="custom-checkbox">Запомнить меня</label>
+
+                    <div class="line">
+                        <button type="submit" class="button_enter"> <span class="arrow_topics">Войти</span></button>
+                        <button type="submit" class="button_enter"> <span class="arrow_topics">Зарегистрироваться</span></button>
+
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
+
+
 
 </body>
 </html>

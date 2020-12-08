@@ -312,14 +312,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Auth\Registration.cshtml" />
-    <Content Include="Views\Auth\Authorization.cshtml" />
     <Content Include="Views\Auth\Profile.cshtml" />
     <Content Include="Views\Files\UploadChallengePage.cshtml" />
     <Content Include="Views\Home\CompetitorsIncoming.cshtml" />
-    <Content Include="Views\Auth\Main.cshtml" />
     <Content Include="Views\Files\UploadChallengeResponsePage.cshtml" />
-    <Content Include="Views\Home\CompetitorsOutcoming.cshtml" />
     <Content Include="Views\Files\CancelChallengePage.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -13,18 +13,6 @@ namespace Challenges.Controllers
 {
     public class AuthController : Controller
     {
-        public ActionResult Registration(int errCode = 0)
-        {
-            ViewBag.errCode = errCode;
-            return View();
-        }
-
-        public ActionResult Authorization(int errCode = 0, string errText = null)
-        {
-            ViewBag.errCode = errCode;
-            ViewBag.errText = errText;
-            return View();
-        }
 
         public ActionResult Profile(string errText = null)
         {
@@ -32,14 +20,14 @@ namespace Challenges.Controllers
             return View();
         }
 
-        async public Task<RedirectResult> Registrate()
+        async public Task<ActionResult> Registrate()
         {
             string login = Request.Params["login"];
             string password = Request.Params["password"];
             Users found = SharedObjects.database.Users.FirstOrDefault(e => e.Login == login);
             if (found != null)
             {
-                return new RedirectResult("/Auth/Registration?errCode=1");
+                return Content("ОШИБКА");
             }
             else
             {
@@ -71,7 +59,7 @@ namespace Challenges.Controllers
         }
 
 
-        async public Task<RedirectResult> Authorize()
+        async public Task<ActionResult> Authorize()
         {
             string login = Request.Params["login"];
             string password = Request.Params["password"];
@@ -83,7 +71,7 @@ namespace Challenges.Controllers
             }
             else
             {
-                return new RedirectResult("/Auth/Authorization?errCode=1");
+                return Content("ОШИБКА");
             }
         }
 

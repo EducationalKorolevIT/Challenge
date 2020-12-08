@@ -16,7 +16,7 @@ body {
 .menu {
     top: 0;
     position: fixed;
-    background-color: #1c2d42a2;
+    background-color: #192737;
     z-index: 5;
     height: 100%;
     width: 300px;
@@ -28,7 +28,7 @@ body {
     cursor: pointer;
     margin-bottom: 30px;
     margin-top: 30px;
-    margin-left: 100px;
+    margin-left: 80px;
     font-size: 50px;
     font-weight: 700;
     color: #5eb8bd;
@@ -49,7 +49,7 @@ body {
     cursor: pointer;
     text-decoration: none;
     text-align: left;
-    font-size: 32px;
+    font-size: 29px;
     line-height: 1.5;
     border-radius: 50px;
     color: #dddddb;
@@ -63,15 +63,18 @@ body {
         margin-left: 30px;
     }
 
-    /*Одно из изображений прячем*/
+    /* Одно из изображений прячем */
     .nav_link .hover_img {
         display: none;
+        transition-duration: 0.3s;
     }
-    /*При наведении показываем выделенное изображение*/
+
+    /* При наведении показываем выделенное изображение */
     .nav_link:hover .hover_img {
         display: inline;
     }
-    /*При наведении старое изображение прячем*/
+
+    /* При наведении старое изображение прячем */
     .nav_link:hover .hide_img {
         display: none;
     }
@@ -131,12 +134,14 @@ body {
     font-size: 30px;
     border: none;
     background: #2d4262;
-    color: white;
+    color: #dddddb;
     transition: .2s linear;
 }
 
     .button-download:hover {
         background: #3e5c88;
+        color: #37b9ff;
+        transition: 0.8s;
     }
 
     .button-download:after {
@@ -164,6 +169,21 @@ body {
         bottom: 8px;
     }
 
+
+    /* Одно из изображений прячем */
+    .button-download .hover_img_download {
+        display: none;
+    }
+
+    /* При наведении показываем выделенное изображение */
+    .button-download:hover .hover_img_download {
+        display: inline;
+    }
+
+    /* При наведении старое изображение прячем */
+    .button-download:hover .hide_img_download {
+        display: none;
+    }
 /* Menu end */
 
 
@@ -172,15 +192,28 @@ body {
 
 
 
-/* Content  131c25*/
+/* Content */
 .content {
     min-height: 1000px;
     width: 100%;
     background-color: #131c25;
     background-repeat: repeat-y;
     background-position: center;
-    background-image: url(/Files/GetJpgFile?fileString=Content/css/img22.JPEG);
-    background-size: 820px;
+}
+
+.advertising {
+    margin: 0;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 300px;
+    background: #3e5c88;
+    color: #dddddb;
+    font-size: 40px;
+}
+
+.advertising_text {
+    margin: 5%;
 }
 
 /* Icon */
@@ -189,9 +222,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     cursor: pointer;
-    top: 500px;
-    left: 70%;
-    margin-right: 30px;
+    top: 20%;
+    left: 62%;
 }
 
 .icon_hover {
@@ -310,6 +342,50 @@ body {
 
 
 
+.description {
+    position: absolute;
+    z-index: 10;
+    margin-top: 5px;
+    margin-left: 31%;
+    width: 30%;
+    height: 120px;
+    background: #1c2d42a2;
+}
+
+.description_nav {
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1.5;
+    margin: 4%;
+}
+
+.description_text {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 7%;
+    color: #dddddb;
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+
+.description_text_example {
+    display: inline-block;
+    justify-content: space-between;
+    margin-right: 7%;
+    text-align: left;
+    color: #dddddb;
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+
+.description_text:hover {
+    color: #37b9ff;
+}
+
+.description_text_example:hover {
+    color: #37b9ff;
+}
+
 /* Content end */
 
 
@@ -325,16 +401,17 @@ body {
     top: 0;
     right: 0;
     width: 300px;
-    padding: 0 50px;
+    padding: 0 30px;
     padding-top: 30px;
 }
 
 .topics_title {
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 700;
     color: #5eb8bd;
     text-align: left;
     transition: 0.8s;
+    padding-right: 60px;
 }
 
     .topics_title:hover {
@@ -360,13 +437,11 @@ body {
         color: #37b9ff;
     }
 
-        .topics_link:hover:after {
-            opacity: 1;
-        }
+/* Buzzword */
 
 .buzzword {
     font-size: 14px;
-    padding-top: 48px;
+    padding-top: 120%;
     line-height: 1.5;
 }
 
@@ -382,13 +457,15 @@ body {
     .buzzword_link:hover {
         color: #37b9ff;
     }
-/* Topics end*/
+/* Buzzword */
+
+/* Topics end */
 
 
 
 
 
-
+/* Auto slider */
 * {
     box-sizing: border-box;
 }
@@ -397,11 +474,12 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
+    background-color: wheat;
 }
 
 .bx-wrapper {
-    left: 25%;
-    width: 50%;
+    left: 31%;
+    width: 30%;
     position: relative;
 }
 
@@ -422,11 +500,10 @@ body {
     height: 45px;
     transition: all ease .4s;
     z-index: 10;
-    background-image: url(/Files/GetJpgFile?fileString=Content/css/up-arrow.PNG);
+    background-image: url(~css/up-arrow.PNG);
     background-position: center;
     background-color: rgb(219, 199, 171);
 }
-
 
 .bx-next {
     text-decoration: none;
@@ -439,7 +516,7 @@ body {
     height: 45px;
     transition: all ease .4s;
     z-index: 10;
-    background-image: url/Files/GetJpgFile?fileString=Content/(css/down-arrow.PNG);
+    background-image: url(~css/down-arrow.PNG);
     background-position: center;
     background-color: rgb(219, 199, 171);
 }
@@ -474,16 +551,17 @@ body {
     text-transform: uppercase;
     font-family: 'Comfortaa', cursive;
 }
+/* Auto slider end*/
 
 
 /* Popup autorization*/
 .popup {
     position: fixed;
-    height: 70%;
-    width: 70%;
+    height: 78%;
+    width: 50%;
     left: 25%;
-    top: 25%;
-    background-color: #131c25;
+    top: 10%;
+    background-color: #0b141fd5;
     background-position: center;
     color: #37b9ff;
     opacity: 0;
@@ -525,7 +603,7 @@ body {
 .popup_content {
     position: relative;
     padding: 30px;
-    background-color: #1c2d42a2;
+    background-color: #131c25;
     transition: all 0.8s ease 0s;
     opacity: 0;
     transform: translate(0px, -100%);
@@ -542,13 +620,30 @@ body {
     color: #dddddb;
 }
 
-.popup_title {
-    font-size: 40px;
-    margin: 20px 0px 1em 0px;
+    .popup_close img {
+        height: 28px;
+        width: 28px;
+        margin-top: 8px;
+    }
+
+/* Одно из изображений прячем */
+.popup_content .cancel_hide {
+    display: none;
 }
 
-.popup_text {
-    color: #dddddb;
+/* При наведении показываем выделенное изображение */
+.popup_content:hover .cancel_hide {
+    display: inline;
+}
+
+/* При наведении старое изображение прячем */
+.popup_content:hover .cancel_hide {
+    display: none;
+}
+
+.popup_title {
+    font-size: 40px;
+    margin: 20px 20px;
 }
 
 .popup.open {
@@ -556,16 +651,79 @@ body {
     visibility: visible;
 }
 
-/* Popup autorization end*/
+/* Popup autorization end */
 
+/* Form enter */
+.form_login {
+    width: 300px;
+    margin-left: 25%;
+    margin-right: 25%;
+    font-size: 1.5em;
+}
 
+.line {
+    width: 100%;
+    margin-top: 10px;
+    float: left;
+}
 
+    .line label {
+        width: 100px;
+        float: left;
+    }
 
+    .line .enter {
+        margin: 3px;
+        width: 200px;
+        float: left;
+        background-color: inherit;
+        border: 0;
+        font-size: 1em;
+        color: inherit;
+        border-bottom: 2px solid #37b9ff;
+    }
 
+        .line .enter:focus {
+            border-bottom: 2px solid #dddddb;
+        }
 
+.button_enter {
+    cursor: pointer;
+    font-size: large;
+    background-color: #1c2d42a2;
+    ;
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    margin: 10px 20px;
+    padding: 10px 30px;
+    position: relative;
+    border: 2px solid #dddddb;
+    color: #dddddb;
+    transition: .4s;
+}
 
+    .button_enter:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border: 2px solid rgba(0,0,0,0);
+        transition: .4s;
+    }
 
+    .button_enter:hover:after {
+        border-color: #dddddb;
+        width: calc(100% - 10px);
+        height: calc(100% + 10px);
+    }
 
+/* Form enter end */
 
 /* */
 /* */
