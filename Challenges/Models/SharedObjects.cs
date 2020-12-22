@@ -50,9 +50,8 @@ namespace Challenges.Models
             }
         }
 
-        public class BoxLengthFirst : Comparer<Users>
+        public class ReputationComparer : Comparer<Users>
         {
-            // Compares by Length, Height, and Width.
             public override int Compare(Users x, Users y)
             {
                 if (x.Reputation>y.Reputation)

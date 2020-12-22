@@ -1,0 +1,91 @@
+.rivals{
+    position: relative;
+    padding-top: 200px;
+    height: 100%;
+    width: 100%;
+    background: #192737;
+
+    z-index: 0;
+}
+
+.cap_rivals{
+    position: relative;
+    left: 25%;
+    height: 180px;
+    background-color:#131c25;
+    width: 100%;
+    z-index: 2;
+}
+
+.rivals_title {
+    background: #131c25;
+
+    color: #37b9ff; 
+    font-size: 30px;
+    text-align: center;
+    line-height: 70px;
+
+    z-index: 2;
+}
+
+.rivals_content {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+
+    width: 93%;
+    margin: 10px;
+
+    color: #dddddb;
+}
+   
+.sort_rivals {
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+
+    padding: 30px 10px;
+    margin: 20px 0;
+
+    width: 200px;
+    height: 45px; 
+    left: 50px;
+
+    font-size: 20px;
+    letter-spacing: 1.2px;
+
+    background-color: #253752;
+
+    border-radius: 30px;
+    border: 0;
+    color: #dddddb;
+
+    box-shadow: 0 5px 0px #3e5c88;
+    transition: all 0.5s ease 0s;
+}
+
+.sort_rivals:hover {
+    box-shadow: 0 5px 0px #253752;
+    background-color: #3e5c88;
+}
+
+.sort_rivals_example {
+    cursor: pointer;
+    color: #dddddb;
+    padding: 20px;
+    padding-left: 300px;
+    margin: 15px;
+    font-size: 15px;
+}
+
+.line_rivals {
+    z-index: -1;
+    width: 100%;
+    border-top: 1px solid #dddddb;
+    right: -50px;
+    margin-right: -150px;
+    margin-bottom: 10px;
+}

@@ -1,13 +1,64 @@
 ﻿<!--удалите это потом-->
+<script>
+    jQuery(document).ready(function () {
+        jQuery('.bxslider').bxSlider({
+            /* General setting */
+            mode: 'vertical',
+            speed: 500,
+            slideMargin: 0,
+            easing: 'jswing',
+            captions: true,
+            video: true,
+            useCSS: false,
+            adaptiveHeight: true,
+            adaptiveHeight: 500,
+            preloadImages: 'all',
+
+            /* Slider */
+            pager: false,
+            pagerType: 'full',
+
+            /* For touch screen */
+            touchEnabled: true,
+            oneToOneTouch: true,
+            preventDefaultSwipeY: false,
+            swipeThreshold: 50,
+
+            /* Control element */
+            controls: false,
+            nextText: '',
+            nextSelector: null,
+            prevText: '',
+            prevSelector: null,
+            autoControls: false,
+
+            /* Automatic slide show yeeeep */
+            auto: true,
+            pause: 2000,
+            autoStart: true,
+            autoDirection: 'next',
+            autoHover: false,
+            autoDelay: 200,
+
+            /* Carousel, hmmm */
+            minSlides: 1,
+            maxSlides: 1,
+            moveSlides: 0,
+            slideWidth: 0,
+
+
+        });
+    });</script>
+
 <ul class="bxslider">
     @{ 
         List<Challenges.Models.Challenges_Table> chs = Challenges.Models.SharedObjects.database.Challenges_Table.ToList();
         for(int i=chs.Count-1;i>=0;i--)
         {
-        <li style="display: flex;flex-direction: column;">
+        <li style="display: flex;flex-direction: column;left: 10px;right: 10px;">
             @{ var from = chs[i].Users; }  
             @{ var to = chs[i].Users1; }  
-            <div class="description">
+            <div class="description" style="left: 10px;right: 10px;width: 100%;">
                 <nav class="description_nav">
                     <div class="description_text">
                         От
@@ -32,8 +83,8 @@
 </ul>
 
 <div class="icon">
-    <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/icon_content/like.png"> <br>
-    <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/icon_content/comments.png"> <br>
-    <img class="icon_hover" id="sound" onclick="sound_off()" src="/Files/GetJpgFile?fileString=Content/css/icon_content/sound.png"> <br>
-    <img class="icon_hover" src="/Files/GetJpgFile?fileString=Content/css/icon_content/more.png"> <br>
+    <img class="icon_hover" src="~/Content/css/icon_content/like.png"> <br>
+    <img class="icon_hover" src="~/Content/css/icon_content/comments.png"> <br>
+    <img class="icon_hover" id="sound" onclick="sound_off()" src="~/Content/css/icon_content/sound.png"> <br>
+    <img class="icon_hover" src="~/Content/css/icon_content/more.png"> <br>
 </div>

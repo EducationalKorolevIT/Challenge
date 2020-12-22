@@ -246,6 +246,9 @@
     <Content Include="Content\css\down-arrow.png" />
     <Content Include="Content\css\eye.JPG" />
     <Content Include="Content\css\house_main.png" />
+    <Content Include="Content\css\icon_popup\cancel.png" />
+    <Content Include="Content\css\icon_popup\cancel.svg" />
+    <Content Include="Content\css\icon_popup\cancel2.png" />
     <Content Include="Content\css\img1.JPG" />
     <Content Include="Content\css\img2.JPG" />
     <Content Include="Content\css\img22.JPEG" />
@@ -263,6 +266,7 @@
     <Content Include="Content\main.css" />
     <Content Include="Content\main.js" />
     <Content Include="Content\profile.css" />
+    <Content Include="Content\rivals.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Avatars\1005.jpg" />
     <Content Include="Files\Challenges\1.mp4" />

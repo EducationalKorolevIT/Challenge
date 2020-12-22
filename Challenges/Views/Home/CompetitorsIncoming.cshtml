@@ -3,65 +3,60 @@
     if (ViewBag.IsAuthorized)
     {
         int targetUserId = ((Challenges.Models.Users)Session["User"]).Id;
-        Challenges.Models.Challenges_Table[] challenges = Challenges.Models.SharedObjects.database.Challenges_Table.Where(e => e.Id_User_To == targetUserId).ToArray();
+
+        List<Challenges.Models.Users> users = new List<Challenges.Models.Users>();
+
+        List<Challenges.Models.Challenges_Table> challenges = Challenges.Models.SharedObjects.database.Challenges_Table.Where(e => e.Id_User_To == targetUserId).ToList();
         ViewBag.Challenges = challenges;
 
         List<Challenges.Models.Responses_Table> responses = new List<Challenges.Models.Responses_Table>();
+        int prevUserID = -1;
         foreach (Challenges.Models.Challenges_Table ch in challenges)
         {
             Challenges.Models.Responses_Table resp = Challenges.Models.SharedObjects.database.Responses_Table.FirstOrDefault(e => e.Id_Challenges_Table == ch.Id);
-            if (resp != null){
+            if (resp != null)
+            {
                 responses.Add(resp);
             }
             else
             {
                 responses.Add(null);
             }
+
+            if(ch.Users.Id != prevUserID)
+            {
+                users.Add(ch.Users);
+            }
+
+            prevUserID = ch.Users.Id;
         }
         ViewBag.responses = responses;
+        ViewBag.users = users;
     }
 }
-
-<h2>Принятые челленджи</h2>
-<br />
+<link rel="stylesheet" type="text/css" href="~/Content/rivals.css">
 
 @if (ViewBag.IsAuthorized)
 {
-<ul style="list-style: none;position: absolute;left: 400px;right: 400px;">
-    @for (int i = 0; i < ViewBag.challenges.Length; i++)
+<div class="rivals" style="position: relative; top: 20px;">
+    <div class="line_rivals"></div>
+    @{ 
+        var users = ViewBag.users;
+        List<Challenges.Models.Challenges_Table> challenges = ViewBag.challenges;
+    }
+    @foreach (Challenges.Models.Users user in users)
     {
-        Challenges.Models.Challenges_Table ch = ViewBag.challenges[i];
-        Challenges.Models.Responses_Table resp = ViewBag.responses[i];
-    <li style="width: 100%;margin-bottom: 50px;">
-        <div style="display: flex; flex-direction: column; background-color: wheat; width: 100%;">
-            <div style="display: flex; flex-direction: row; align-items: center;">
-                <div style="background-color: red; width: 16px; height: 16px;"></div>
-                @Challenges.Models.SharedObjects.database.Users.FirstOrDefault(e => e.Id == ch.Id_User_From).Login
-            </div>
-            <hr />
-            @ch.Description<br />
-            <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@ch.Id"></video><br />
-            @if (ch.Status == 0)
+        <div class="rivals_content">@(user.Nickname??user.Login)</div> <div class="line_rivals"></div>
+        <div style="margin-left: 100px;">
+            @foreach(Challenges.Models.Challenges_Table challenge in challenges.Where(e => e.Users == user))
             {
-                <a href="/Files/UploadChallengeResponsePage?srcChallengeId=@ch.Id">Ответить на челлендж</a>
-            }
-            else if (ch.Status == 1)
-            {
-                <p>Уже есть ответ на челлендж</p>
-                <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeResponseVideoFile?videoId=@resp.Id"></video><br />
-            }
-            @if (ch.Status == 0)
-            {
-                <a href="/Files/CancelChallengePage?chId=@ch.Id">Отклонить</a>
-            }
-            else if (ch.Status == 2)
-            {
-                <p>Челлендж отклонён</p>
+                <div class="rivals_content">@challenge.Description</div>
+                <video src="/Files/GetChallengeVideoFile?videoId=@challenge.Id" controls width="720"></video>
+                <div class="line_rivals"></div>
             }
         </div>
-    </li>
     }
-</ul>
+</div>
 }
 else
 {
