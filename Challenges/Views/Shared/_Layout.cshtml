@@ -24,10 +24,10 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="~/Content/main.css">
+    <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
     <script src="~/Content/main.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="~/Content/rivals.css">
+    <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/rivals.css">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
 
@@ -65,7 +65,21 @@
             <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/notifications2.png"><img class="hide_img" src="~/Content/css/icon_menu/notifications.png"><div>Уведомления</div></a>
             <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/messanges2.png"><img class="hide_img" src="~/Content/css/icon_menu/messanges.png"><div>Сообщения</div></a>
             <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/save2.png"><img class="hide_img" src="~/Content/css/icon_menu/save.png"><div>Сохранённое</div></a>
-            <a class="nav_link" href="#profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>Профиль</div></a>
+            @if (!ViewBag.IsAuthorized)
+            {
+                <a class="nav_link" href="#profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>Профиль</div></a>
+            }
+            else
+            {
+                if (ViewBag.IsAvatarExists)
+                {
+                    <a class="nav_link" href="/Auth/Profile"><img class="hover_img" src="/Files/GetAvatar"><img class="hide_img" src="/Files/GetAvatar"><div>@(user.Login)</div></a>
+                }
+                else
+                {
+                    <a class="nav_link" href="/Auth/Profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>@(user.Login)</div></a>
+                }
+            }
             <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/customization2.png"><img class="hide_img" src="~/Content/css/icon_menu/customization.png"><div>Настройки</div></a>
         </nav>
 
@@ -107,11 +121,11 @@
             <div class="div_topics">
                 <h3 class="topics_title">Актуальные темы</h3>
 
-                <div class="topics_link">#Cyberpunk2077</div>
-                <div class="topics_link">#2020Wrapped</div>
-                <div class="topics_link">#чипсыскрабом</div>
-                <div class="topics_link">#деньхудожника</div>
-                <div class="topics_link">#ямолодец</div>
+                <div class="topics_link">#ReadingChallenge</div>
+                <div class="topics_link">#Meditation</div>
+                <div class="topics_link">#WalkEveryDay</div>
+                <div class="topics_link">#Сharging</div>
+                <div class="topics_link">#DrinkWater</div>
 
                 <button class="all_topics">Показать ещё</button>
             </div>
@@ -155,7 +169,7 @@
 
                     <div class="line">
                         <button type="submit" href="profile.html" class="button_enter"> <span href="profile.html" class="arrow_topics">Войти</span></button>
-                        <button type="submit" class="button_enter"> <span class="arrow_topics">Зарегистрироваться</span></button>
+                        <button type="button" onclick="location='#registration'" class="button_enter"> <span class="arrow_topics">Зарегистрироваться</span></button>
 
                     </div>
 
@@ -164,7 +178,42 @@
         </div>
     </div>
 
+    <div id="registration" class="popup">
+        <a href="" class="popup_area"></a>
+        <div class="popup_body">
+            <div class="popup_content">
+                <a href="#main" class="popup_close"><img class="cancel_hide" src="~/Content/css/icon_popup/cancel.png"> <img class="cancel_hover" src="~/Content/css/icon_popup/cancel2.png"></a>
 
+                <div class="popup_title">
+                    <p>Присоединяйся к Challenge</p>
+                    <p>прямо сейчас!</p>
+                </div>
+
+                <form action="/Auth/Registrate" class="form_login">
+
+                    <div class="line">
+                        <label for="login">Логин</label>
+                        <input id="login" class="enter" type="text" name="login" />
+                    </div>
+
+                    <div class="line">
+                        <label for="password">Пароль</label>
+                        <input id="password" class="enter" type="password" name="password" />
+                    </div>
+
+                    <input type="checkbox" id="custom-checkbox">
+                    <label for="custom-checkbox">Запомнить меня</label>
+
+                    <div class="line">
+                        <button type="submit" href="profile.html" class="button_enter"> <span href="profile.html" class="arrow_topics">Зарегестрироваться</span></button>
+                        <button type="submit" onclick="location='profile'" class="button_enter"> <span class="arrow_topics">Авторизоваться</span></button>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

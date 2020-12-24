@@ -53,6 +53,7 @@ body {
         width: 32px;
         margin-top: 8px;
         margin-left: 30px;
+        border-radius: 8px;
     }
 
     /* Одно из изображений прячем */
@@ -186,10 +187,10 @@ body {
 
 /* Content */
 .content {
+    margin-left: 300px;
     margin-right: 300px;
     width: auto;
     min-height: 1000px;
-    height: 100%;
     background-color: #131c25;
     background-repeat: repeat-y;
     background-position: center;
@@ -360,11 +361,9 @@ body {
 /* Description */
 
 .description {
-    position: relative;
-    z-index: 10;
-    margin-top: 5px;
+    margin: 0 25%;
     width: auto;
-    height: 15%;
+    height: 200px;
     background: #1c2d42a2;
 }
 
@@ -520,8 +519,9 @@ body {
 }
 
 .bx-wrapper {
-    left: 31%;
-    width: 30%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
     position: relative;
 }
 

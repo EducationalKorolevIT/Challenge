@@ -79,7 +79,7 @@ namespace Challenges.Controllers
         {
             Response.Cookies["UserData"].Value = null;
             Session["User"] = null;
-            return new RedirectResult("/Auth/Authorization");
+            return new RedirectResult("/");
         }
 
         public ActionResult Main()

@@ -1,56 +1,4 @@
-﻿<!--удалите это потом
-<script>
-    jQuery(document).ready(function () {
-        jQuery('.bxslider').bxSlider({
-            /* General setting */
-            mode: 'vertical',
-            speed: 500,
-            slideMargin: 0,
-            easing: 'jswing',
-            captions: true,
-            video: true,
-            useCSS: false,
-            adaptiveHeight: true,
-            adaptiveHeight: 500,
-            preloadImages: 'all',
-
-            /* Slider */
-            pager: false,
-            pagerType: 'full',
-
-            /* For touch screen */
-            touchEnabled: true,
-            oneToOneTouch: true,
-            preventDefaultSwipeY: false,
-            swipeThreshold: 50,
-
-            /* Control element */
-            controls: false,
-            nextText: '',
-            nextSelector: null,
-            prevText: '',
-            prevSelector: null,
-            autoControls: false,
-
-            /* Automatic slide show yeeeep */
-            auto: true,
-            pause: 2000,
-            autoStart: true,
-            autoDirection: 'next',
-            autoHover: false,
-            autoDelay: 200,
-
-            /* Carousel, hmmm */
-            minSlides: 1,
-            maxSlides: 1,
-            moveSlides: 0,
-            slideWidth: 0,
-
-
-        });
-    });</script>-->
-
-<ul class="bxslider">
+﻿<ul class="bxslider">
     @{
         List<Challenges.Models.Challenges_Table> chs = Challenges.Models.SharedObjects.database.Challenges_Table.ToList();
         for (int i = chs.Count - 1; i >= 0; i--)
@@ -58,7 +6,7 @@
             <li style="display: flex;flex-direction: column;left: 10px;right: 10px;">
                 @{ var from = chs[i].Users; }
                 @{ var to = chs[i].Users1; }
-                <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
+                <video style="border-radius: 10px; width: inherit; height: 720px; margin-left: -12px;" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
                 <div class="challenge_data">
                     <input type="hidden" class="ch_data_name_from" value="@(from.Nickname??from.Login)" />
                     <input type="hidden" class="ch_data_name_to" value="@(to.Nickname??to.Login)" />
