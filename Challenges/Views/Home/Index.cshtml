@@ -1,4 +1,4 @@
-﻿<!--удалите это потом-->
+﻿<!--удалите это потом
 <script>
     jQuery(document).ready(function () {
         jQuery('.bxslider').bxSlider({
@@ -48,43 +48,105 @@
 
 
         });
-    });</script>
+    });</script>-->
 
 <ul class="bxslider">
-    @{ 
+    @{
         List<Challenges.Models.Challenges_Table> chs = Challenges.Models.SharedObjects.database.Challenges_Table.ToList();
-        for(int i=chs.Count-1;i>=0;i--)
+        for (int i = chs.Count - 1; i >= 0; i--)
         {
-        <li style="display: flex;flex-direction: column;left: 10px;right: 10px;">
-            @{ var from = chs[i].Users; }  
-            @{ var to = chs[i].Users1; }  
-            <div class="description" style="left: 10px;right: 10px;width: 100%;">
-                <nav class="description_nav">
-                    <div class="description_text">
-                        От
-                        <p class="description_text_example" href="">@(from.Nickname??from.Login)</p>
-                    </div>
-
-                    <div class="description_text">
-                        Кому
-                        <p class="description_text_example" href="">@(to.Nickname??to.Login)</p>
-                    </div>
-
-                    <div class="description_text">
-                        Описание
-                        <p class="description_text_example" href=""> @(chs[i].Description)</p>
-                    </div>
-                </nav>
-            </div>
-            <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
-        </li>
+            <li style="display: flex;flex-direction: column;left: 10px;right: 10px;">
+                @{ var from = chs[i].Users; }
+                @{ var to = chs[i].Users1; }
+                <video style="border-radius: 10px;" height="720" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
+                <div class="challenge_data">
+                    <input type="hidden" class="ch_data_name_from" value="@(from.Nickname??from.Login)" />
+                    <input type="hidden" class="ch_data_name_to" value="@(to.Nickname??to.Login)" />
+                    <input type="hidden" class="ch_data_description" value="@chs[i].Description" />
+                </div>
+            </li>
         }
     }
 </ul>
+<div class="description">
+    <nav class="description_nav">
+        <div class="description_text">
+            От
+            <p class="description_text_example" id="name_from" href=""></p>
+        </div>
 
-<div class="icon">
-    <img class="icon_hover" src="~/Content/css/icon_content/like.png"> <br>
-    <img class="icon_hover" src="~/Content/css/icon_content/comments.png"> <br>
-    <img class="icon_hover" id="sound" onclick="sound_off()" src="~/Content/css/icon_content/sound.png"> <br>
-    <img class="icon_hover" src="~/Content/css/icon_content/more.png"> <br>
+        <div class="description_text">
+            Кому
+            <p class="description_text_example" id="name_to" href=""></p>
+        </div>
+
+        <div class="description_text">
+            Описание
+            <p class="description_text_example" id="description" href=""></p>
+        </div>
+    </nav>
 </div>
+
+<script>
+    jQuery(document).ready(function () {
+        slider = jQuery('.bxslider').bxSlider({
+            /* General setting */
+            mode: 'vertical',
+            speed: 500,
+            slideMargin: 0,
+            easing: 'jswing',
+            captions: true,
+            video: true,
+            useCSS: false,
+            adaptiveHeight: true,
+            adaptiveHeight: 500,
+            preloadImages: 'all',
+
+            /* Slider */
+            pager: false,
+            pagerType: 'full',
+
+            /* For touch screen */
+            touchEnabled: true,
+            oneToOneTouch: true,
+            preventDefaultSwipeY: false,
+            swipeThreshold: 50,
+
+            /* Control element */
+            controls: false,
+            nextText: '',
+            nextSelector: null,
+            prevText: '',
+            prevSelector: null,
+            autoControls: false,
+
+            /* Automatic slide show yeeeep */
+            auto: true,
+            pause: 2000,
+            autoStart: true,
+            autoDirection: 'next',
+            autoHover: false,
+            autoDelay: 200,
+
+            /* Carousel, hmmm */
+            minSlides: 1,
+            maxSlides: 1,
+            moveSlides: 0,
+            slideWidth: 0,
+
+
+        });
+
+        var elems = document.querySelectorAll('.bxslider li');
+        var name_from = document.querySelector('#name_from');
+        var name_to = document.querySelector('#name_to');
+        var description = document.querySelector('#description');
+
+        setInterval(function () {
+            elem = elems[slider.getCurrentSlide()];
+
+            name_from.innerHTML = elem.querySelector('.challenge_data .ch_data_name_from').value;
+            name_to.innerHTML = elem.querySelector('.challenge_data .ch_data_name_to').value;
+            description.innerHTML = elem.querySelector('.challenge_data .ch_data_description').value;
+        }, 200);
+    });</script>

@@ -14,12 +14,7 @@ namespace Challenges.Controllers
             return View();
         }
 
-        public ActionResult CompetitorsIncoming()
-        {
-            return View();
-        }
-
-        public ActionResult CompetitorsOutcoming()
+        public ActionResult Competitors()
         {
             return View();
         }

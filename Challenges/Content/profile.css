@@ -1,0 +1,44 @@
+.profile {
+    position: relative;
+    width: 100%;
+    background-color: rebeccapurple;
+}
+
+.avatar {
+    margin: 3%;
+    width: 200px;
+    height: 200px;
+    border-radius: 70%;
+
+}
+
+.info {
+    display: inline-block;
+    justify-content: space-between;
+    overflow: hidden;
+
+    text-decoration: none;
+    text-align: left;
+    font-size: 29px;
+    line-height: 1.5;
+    color: #dddddb;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.nickname {
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.description_info {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.quantity_rivals .quantity_challenge{
+    font-size: 15px;
+    cursor: pointer;
+}

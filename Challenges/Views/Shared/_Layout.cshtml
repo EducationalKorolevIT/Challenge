@@ -27,8 +27,11 @@
     <link rel="stylesheet" type="text/css" href="~/Content/main.css">
     <script src="~/Content/main.js"></script>
 
+    <link rel="stylesheet" type="text/css" href="~/Content/rivals.css">
+
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
 
+    <link href="~/Content/bxslider/jquery.bxslider.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="~/Content/bxslider/jquery.bxslider.min.js"></script>
     <script src="~/Content/bxslider/jquery.easing.1.3.js"></script>
@@ -48,11 +51,11 @@
         <nav class="nav">
             <a class="nav_link" href="/">
                 <img class="hover_img" src="~/Content/css/icon_menu/main2.png">
-                <img class="hide_img" src="~/Content/css/icon_menu/main.png">
-                <div>Главная</div>
+                <img class="hide_img" src="~/Content/css/icon_menu/main2.png">
+                <div style="color: #37b9ff;">Главная</div>
             </a>
 
-            <a class="nav_link" href="/Home/CompetitorsIncoming">
+            <a class="nav_link" href="/Home/Competitors">
                 <img class="hover_img" src="~/Content/css/icon_menu/rivals2.png">
                 <img class="hide_img" src="~/Content/css/icon_menu/rivals3.png">
                 <div>Соперники</div>
@@ -69,25 +72,32 @@
         <button type="submit" class="button-download"><img class="hide_img_download" src="~/Content/css/icon_menu/download.png"><img class="hover_img_download" src="~/Content/css/icon_menu/download2.png"> <span>Загрузить</span> </button>
     </div>
 
+
+
+    <!--start of advertising-->
+    <button class="button-open-hide-menu" onclick="closeOpenMenu();"><span class="arrow_menu"><</span></button>
+    <div class="advertising">
+        <p class="advertising_text">
+            Здесь могла бы быть ваша реклама :) <br />
+            по вопросам пишите<br />
+            tg: @("@")zvendra
+        </p>
+        <img class="qr" src="~/Content/css/icon_content/Qr_frontend.gif"> <br>
+    </div>
+
+    <button class="button-hide-open-topics" onclick="closeOpenTopics();"><span class="arrow_topics">></span></button>
+    <div class="advertising_topics">
+        <p class="advertising_topics_text">
+            Здесь могла бы быть ваша реклама :) <br />
+            по вопросам не пишите<br />
+        </p>
+        <img class="qr" src="~/Content/css/icon_content/QR_beckend.jpg"> <br>
+    </div>
+    <!--end of advertising-->
+
+
+
     <div class="content">
-        <button class="button-open-hide-menu" onclick="closeOpenMenu();"><span class="arrow_menu"><</span></button>
-        <div class="advertising">
-            <p class="advertising_text">
-                Здесь могла бы быть ваша реклама :) <br />
-                по вопросам пишите<br />
-                tg: @("@")zvendra
-            </p>
-        </div>
-
-        <button class="button-hide-open-topics" onclick="closeOpenTopics();"><span class="arrow_topics">></span></button>
-        <div class="advertising_topics">
-            <p class="advertising_topics_text">
-                Здесь могла бы быть ваша реклама :) <br />
-                по вопросам пишите<br />
-                discord: dex22044#3693
-            </p>
-        </div>
-
         @RenderBody()
     </div>
 
@@ -132,19 +142,19 @@
 
                     <div class="line">
                         <label for="login">Логин</label>
-                        <input id="login" class="enter" type="text" class="input_box" name="login" />
+                        <input id="login" class="enter" type="text" name="login" />
                     </div>
 
                     <div class="line">
                         <label for="password">Пароль</label>
-                        <input id="password" class="enter" type="password" class="input_box" name="password" />
+                        <input id="password" class="enter" type="password" name="password" />
                     </div>
 
                     <input type="checkbox" id="custom-checkbox">
                     <label for="custom-checkbox">Запомнить меня</label>
 
                     <div class="line">
-                        <button type="submit" class="button_enter"> <span class="arrow_topics">Войти</span></button>
+                        <button type="submit" href="profile.html" class="button_enter"> <span href="profile.html" class="arrow_topics">Войти</span></button>
                         <button type="submit" class="button_enter"> <span class="arrow_topics">Зарегистрироваться</span></button>
 
                     </div>
