@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     ViewBag.IsAuthorized = Session["User"] != null;
 }
 
@@ -6,14 +6,23 @@
 
 @if (ViewBag.IsAuthorized)
 {
-    <form enctype="multipart/form-data" action="/Files/UploadChallenge" method="post">
-        <input type="text" name="userNameTo" />
-        <input type="text" name="challengeDescription" />
-        <input type="file" name="videoFile" />
-        <input type="submit" value="Загрузить"/>
-    </form>
+    <div style="position: absolute;left: 500px; right: 500px;top: 50px;background-color: darkgray;border-radius: 15px;">
+        <form enctype="multipart/form-data" action="/Files/UploadChallenge" method="post" style="margin-left: 20px;">
+            <div>
+                Кому (логин, не никнейм): <input type="text" name="userNameTo" />
+            </div>
+
+            <div>
+                Описание: <input type="text" name="challengeDescription" />
+            </div>
+            <div>
+                Файл: <input type="file" name="videoFile" />
+            </div>
+            <input type="submit" value="Загрузить" />
+        </form>
+    </div>
 }
 else
 {
     <p>Вы не авторизованы.</p>
-} 
+}
