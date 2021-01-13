@@ -1,0 +1,266 @@
+.form_change {
+        position: relative;
+        width: auto;
+        height: auto;
+        margin: auto;
+
+        border: 2px solid #ff0000;
+        border-radius: 30px;
+    
+        display: inline-block;
+}
+    
+.form_change:hover {
+        border: 2px solid #37b9ff;
+}
+
+.form_settings_profile {
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin: 0;
+    left: 5%;
+    border: 2px solid #2d4262;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.form_avatar_profile {
+    position: relative;
+    width: auto;
+    height: auto;
+    left: 5%;
+    padding: 10px;
+
+    border-radius: 30px;
+    border: 2px solid #2d4262;
+
+    align-items: center;
+    display: table-cell;
+    font-size: 29px;
+    line-height: 1.5;
+    color: #dddddb;
+    z-index: 999;
+}
+
+.form_name_profile {
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 10px 0;
+    margin-top: 20px;
+    border: 2px solid #2d4262;
+    border-radius: 30px;
+
+    display: inline-block;
+    justify-content: space-between;
+    font-size: 29px;
+    line-height: 1.5;
+    color: #dddddb;
+    z-index: 999;
+}
+
+.form_name_profile:hover {
+    border: 2px solid #37b9ff;
+}
+
+.settings_profile_title {
+    width: 100%;
+    color: #37b9ff; 
+    font-size: 30px;
+    text-align: center;
+    line-height: 100px;
+    z-index: 2;
+}
+
+.add_photo{
+    position: relative;
+}
+
+.avatar_settings_profile {
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
+    border: 3px solid #37b9ff;
+    filter: brightness(50%);
+    cursor: pointer;
+    background: url(css/icon_content/avatar.JPG);
+    background-size: auto 100%;
+}
+
+.avatar_add {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    bottom: 45px;
+    left: 50px;
+    cursor: pointer;
+    background: url(css/icon_popup/add_photo.png);
+    background-size: auto 100%;
+
+}
+
+.enter_profile_title {
+    margin: 3px;
+    width: 200px;
+    float: left;
+    background-color: inherit;
+    border: 0;
+    font-size: 20px;
+    color: inherit;
+    border-bottom: 2px solid #37b9ff;
+}
+
+.enter_profile_title:hover {
+    border-bottom: 2px solid #dddddb;
+}
+
+.info {
+    position: absolute;
+    display: inline-block;
+    justify-content: space-between;
+    overflow: hidden;
+
+    text-decoration: none;
+    text-align: left;
+    font-size: 29px;
+    margin-left: 20px;
+    margin-top: 150px;
+    line-height: 1.5;
+    color: #dddddb;
+}
+
+.name {
+    font-weight: bold;
+}
+
+.nickname {
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.description_info {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.quantity_rivals, .quantity_challenge{
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.button_avatar {
+    overflow: hidden;
+    cursor: pointer;
+    align-items: center;
+
+    padding: 0 20px;
+    margin-top: 20px;
+
+    width: 190px;
+    height: 55px; 
+    
+    font-size: 20px;
+    border-radius: 30px;
+    border: 0;
+    
+    background: #2d4262;
+    color: #dddddb;
+
+    transition: .2s linear;
+}
+
+.button_avatar:hover {
+    background: #3e5c88;
+    color: #37b9ff; 
+}
+
+
+
+
+
+
+
+
+.confirm_changes {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    padding: 0px 20px;
+    margin-left: 0px;
+    margin-top: 10px;
+
+    width: 240px;
+    height: 50px; 
+
+    font-size: 20px;
+    letter-spacing: 1.2px;
+
+    background-color: #253752;
+
+    border-radius: 30px;
+    border: 0;
+    color: #dddddb;
+
+    box-shadow: 0 5px 0px #3e5c88;
+    transition: all 0.5s ease 0s;
+}
+
+.confirm_changes:hover {
+    padding: 0px 50px;
+    box-shadow: 0 5px 0px #253752;
+    background-color: #3e5c88;
+}
+
+.cancel_changes {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    padding: 0px 50px;
+    margin-left: 0px;
+    margin-top: 10px;
+
+    width: 240px;
+    height: 50px; 
+
+    font-size: 20px;
+    letter-spacing: 1.2px;
+
+    background: transparent;
+
+    border-radius: 30px;
+    border: 1px solid #253752;
+    color: #dddddb;
+
+    transition: all 0.5s ease 0s;
+}
+
+.cancel_changes:hover {
+    padding: 0px 20px;
+    border: 1px solid #37b9ff;
+
+}
+
+.div_elems{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+

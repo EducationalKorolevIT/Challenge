@@ -25,17 +25,17 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
-    <script src="~/Content/main.js"></script>
+    <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/rivals.css">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
 
-    <link href="~/Content/bxslider/jquery.bxslider.css" rel="stylesheet">
+    <link href="/Files/GetCssFile?fileString=Content/bxslider/jquery.bxslider.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="~/Content/bxslider/jquery.bxslider.min.js"></script>
-    <script src="~/Content/bxslider/jquery.easing.1.3.js"></script>
-    <script src="~/Content/bxslider/jquery.fitvids.js"></script>
+    <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.bxslider.min.js"></script>
+    <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.easing.1.3.js"></script>
+    <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.fitvids.js"></script>
 
     <title>
         Главная/Challenge
@@ -46,25 +46,26 @@
 <body>
     <div class="menu">
 
-        <a href="/"><img class="logo" src="~/Content/css/logo.png"></a>
+        <a href="main.html"><img class="logo" src="/Files/GetJpgFile?fileString=Content/css/logo.png"></a>
 
         <nav class="nav">
-            <a class="nav_link" href="/">
-                <img class="hover_img" src="~/Content/css/icon_menu/main2.png">
-                <img class="hide_img" src="~/Content/css/icon_menu/main2.png">
+            <a class="nav_link" href="main.html">
+                <img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main2.png">
+                <img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main2.png">
                 <div style="color: #37b9ff;">Главная</div>
             </a>
 
-            <a class="nav_link" href="/Home/Competitors">
-                <img class="hover_img" src="~/Content/css/icon_menu/rivals2.png">
-                <img class="hide_img" src="~/Content/css/icon_menu/rivals3.png">
+            <a class="nav_link" href="rivals.html">
+                <img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals2.png">
+                <img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals3.png">
                 <div>Соперники</div>
             </a>
 
-            <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/search2.png"><img class="hide_img" src="~/Content/css/icon_menu/search.png"><div>Поиск</div></a>
-            <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/notifications2.png"><img class="hide_img" src="~/Content/css/icon_menu/notifications.png"><div>Уведомления</div></a>
-            <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/messanges2.png"><img class="hide_img" src="~/Content/css/icon_menu/messanges.png"><div>Сообщения</div></a>
-            <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/save2.png"><img class="hide_img" src="~/Content/css/icon_menu/save.png"><div>Сохранённое</div></a>
+            <a class="nav_link" href="#"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/search2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/search.png"><div>Поиск</div></a>
+            <a class="nav_link" href="#"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/notifications2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/notifications.png"><div>Уведомления</div></a>
+            <a class="nav_link" href="#"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/messanges2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/messanges.png"><div>Сообщения</div></a>
+            <a class="nav_link" href="#"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/save2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/save.png"><div>Сохранённое</div></a>
+
             @if (!ViewBag.IsAuthorized)
             {
                 <a class="nav_link" href="#profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>Профиль</div></a>
@@ -80,10 +81,14 @@
                     <a class="nav_link" href="/Auth/Profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>@(user.Login)</div></a>
                 }
             }
-            <a class="nav_link" href="#"><img class="hover_img" src="~/Content/css/icon_menu/customization2.png"><img class="hide_img" src="~/Content/css/icon_menu/customization.png"><div>Настройки</div></a>
+            <a class="nav_link" href="#"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/customization2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/customization.png"><div>Настройки</div></a>
         </nav>
 
-        <button type="button" onclick="location='/Files/UploadChallengePage'" class="button-download"><img class="hide_img_download" src="~/Content/css/icon_menu/download.png"><img class="hover_img_download" src="~/Content/css/icon_menu/download2.png"> <span>Загрузить</span> </button>
+        <a href="#download" class="button-download">
+            <img class="hide_img_download" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/download.png">
+            <img class="hover_img_download" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/download2.png">
+            <span>Загрузить</span>
+        </a>
     </div>
 
 
@@ -96,7 +101,7 @@
             по вопросам пишите<br />
             tg: @("@")zvendra
         </p>
-        <img class="qr" src="~/Content/css/icon_content/Qr_frontend.gif"> <br>
+        <img class="qr" src="css/icon_content/Qr_frontend.gif"> <br>
     </div>
 
     <button class="button-hide-open-topics" onclick="closeOpenTopics();"><span class="arrow_topics">></span></button>
@@ -105,7 +110,14 @@
             Здесь могла бы быть ваша реклама :) <br />
             по вопросам не пишите<br />
         </p>
-        <img class="qr" src="~/Content/css/icon_content/QR_beckend.jpg"> <br>
+        <img class="qr" src="css/icon_content/QR_beckend.jpg"> <br>
+    </div>
+
+    <div class="icon">
+        <img class="icon_hover" src="css/icon_content/like.png"> <br>
+        <img class="icon_hover" src="css/icon_content/comments.png"> <br>
+        <img class="icon_hover" id="sound" onclick="sound_off()" src="css/icon_content/sound.png"> <br>
+        <img class="icon_hover" src="css/icon_content/more.png"> <br>
     </div>
     <!--end of advertising-->
 
@@ -142,35 +154,37 @@
     </div>
 
     <div id="profile" class="popup">
-        <a href="" class="popup_area"></a>
+        <a href="#main" class="popup_area"></a>
         <div class="popup_body">
             <div class="popup_content">
-                <a href="#main" class="popup_close"><img class="cancel_hide" src="~/Content/css/icon_popup/cancel.png"> <img class="cancel_hover" src="~/Content/css/icon_popup/cancel2.png"></a>
+                <a href="#main" class="popup_close">
+                    <img class="cancel_hide" src="css/icon_popup/cancel.png">
+                    <img class="cancel_hover" src="css/icon_popup/cancel2.png">
+                </a>
 
                 <div class="popup_title">
                     <p>Присоединяйся к Challenge</p>
                     <p>прямо сейчас!</p>
                 </div>
 
-                <form action="/Auth/Authorize" class="form_login">
+                <form action="" class="form_login">
 
                     <div class="line">
                         <label for="login">Логин</label>
-                        <input id="login" class="enter" type="text" name="login" />
+                        <input id="login" class="enter" type="text" class="input_box" />
                     </div>
 
                     <div class="line">
                         <label for="password">Пароль</label>
-                        <input id="password" class="enter" type="password" name="password" />
+                        <input id="password" class="enter" type="password" class="input_box" />
                     </div>
 
                     <input type="checkbox" id="custom-checkbox">
                     <label for="custom-checkbox">Запомнить меня</label>
 
                     <div class="line">
-                        <button type="submit" href="profile.html" class="button_enter"> <span href="profile.html" class="arrow_topics">Войти</span></button>
-                        <button type="button" onclick="location='#registration'" class="button_enter"> <span class="arrow_topics">Зарегистрироваться</span></button>
-
+                        <button type="button" onclick="location='profile.html'" class="button_enter"> <span>Войти</span></button>
+                        <button type="button" class="button_enter"> <span>Зарегистрироваться</span></button>
                     </div>
 
                 </form>
@@ -178,39 +192,18 @@
         </div>
     </div>
 
-    <div id="registration" class="popup">
-        <a href="" class="popup_area"></a>
-        <div class="popup_body">
-            <div class="popup_content">
-                <a href="#main" class="popup_close"><img class="cancel_hide" src="~/Content/css/icon_popup/cancel.png"> <img class="cancel_hover" src="~/Content/css/icon_popup/cancel2.png"></a>
+    <div id="download" class="popup_registration">
+        <a href="#main" class="popup_area_registration"></a>
+        <div class="popup_body_registration">
+            <div class="popup_content_registration">
+                <a href="#main" class="popup_close_registration"><img class="cancel_hide_registration" src="css/icon_popup/cancel.png"> <img class="cancel_hover_registration" src="css/icon_popup/cancel2.png"></a>
 
-                <div class="popup_title">
-                    <p>Присоединяйся к Challenge</p>
-                    <p>прямо сейчас!</p>
+                <div class="popup_title_registration">
+                    <p>Перетащите файлы в эту область</p>
+                    <p class="or_registration">или</p>
                 </div>
+                <button type="button" class="button_registration"> <span>Выберите при помощи проводника</span></button>
 
-                <form action="/Auth/Registrate" class="form_login">
-
-                    <div class="line">
-                        <label for="login">Логин</label>
-                        <input id="login" class="enter" type="text" name="login" />
-                    </div>
-
-                    <div class="line">
-                        <label for="password">Пароль</label>
-                        <input id="password" class="enter" type="password" name="password" />
-                    </div>
-
-                    <input type="checkbox" id="custom-checkbox">
-                    <label for="custom-checkbox">Запомнить меня</label>
-
-                    <div class="line">
-                        <button type="submit" href="profile.html" class="button_enter"> <span href="profile.html" class="arrow_topics">Зарегестрироваться</span></button>
-                        <button type="button" onclick="location='#profile'" class="button_enter"> <span class="arrow_topics">Войти</span></button>
-
-                    </div>
-
-                </form>
             </div>
         </div>
     </div>

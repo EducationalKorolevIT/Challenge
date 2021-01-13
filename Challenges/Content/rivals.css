@@ -1,14 +1,5 @@
-.rivals{
-    position: relative;
-    padding-top: 200px;
-    height: 100%;
-    width: 100%;
-    background: #192737;
-    z-index: 0;
-}
-
 .cap_rivals{
-    position: fixed;
+    position: relative;
 
     height: 180px;
     background-color: #131c25;
@@ -30,6 +21,7 @@
 .sort_rivals {
     font-size: 20px;
     text-transform: uppercase;
+    margin-left: 15%;
 }
 
 .sort_rivals_example {
@@ -49,11 +41,20 @@
     border-bottom: 1px solid #37b9ff;
 }
 
+.rivals{
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    z-index: 0;
+}
+
 .rivals_content {
     font-size: 30px;
     font-weight: 700;
     text-align: left;
     cursor: pointer;
+    align-items: center;
 
     width: 93%;
     margin: 10px;

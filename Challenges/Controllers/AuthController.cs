@@ -20,6 +20,11 @@ namespace Challenges.Controllers
             return View();
         }
 
+        public ActionResult ProfileSettings()
+        {
+            return View();
+        }
+
         async public Task<ActionResult> Registrate()
         {
             string login = Request.Params["login"];
@@ -45,7 +50,7 @@ namespace Challenges.Controllers
                 SharedObjects.SetCookieUserData((Users)Session["User"]);
                 return new RedirectResult("/Home/Index");
             }
-            return new RedirectResult("/Auth/Profile?errText=Ошибка: Session[\"User\"] равно null. Возможно, вы не вошли?");
+            return Content("ОШИБКА");
         }
 
         public ActionResult LoadFromCookie()
@@ -55,7 +60,7 @@ namespace Challenges.Controllers
                 Session["User"] = SharedObjects.GetCookieUserData();
                 return new RedirectResult("/Home/Index");
             }
-            return new RedirectResult("/Auth/Authorization?errText=Ошибка: Request.Cooukies[\"UserData\"] равно null. Возможно, у вас нет сохранённого пользователя?");
+            return Content("ОШИБКА");
         }
 
 

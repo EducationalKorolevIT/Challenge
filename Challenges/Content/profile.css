@@ -1,7 +1,7 @@
 .profile {
     position: relative;
     width: 100%;
-    background-color: rebeccapurple;
+    /*background-color: rebeccapurple;*/
 }
 
 .avatar {
@@ -9,36 +9,106 @@
     width: 200px;
     height: 200px;
     border-radius: 70%;
-
 }
 
-.info {
+.info_profile {
+    position: absolute;
     display: inline-block;
     justify-content: space-between;
     overflow: hidden;
 
     text-decoration: none;
     text-align: left;
-    font-size: 29px;
+ 
+    top: 50px;
     line-height: 1.5;
     color: #dddddb;
 }
 
-.name {
+.name_profile {
     font-weight: bold;
+    color: #37b9ff;
+    font-size: 29px;
+
 }
 
-.nickname {
+.nickname_profile {
     font-size: 20px;
     font-weight: 100;
 }
 
 .description_info {
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
 }
 
-.quantity_rivals .quantity_challenge{
+.quantity_rivals, .quantity_challenge{
     font-size: 15px;
     cursor: pointer;
+    flex-direction: column;
+}
+
+.quantity_rivals:hover, .quantity_challenge:hover{
+    border-bottom: 1px solid #37b9ff;
+}
+
+
+
+/* Button change profile */
+
+.button_change_profile {
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+
+    padding: 12px 20px;
+    margin: 30px 30px 30px 30px;
+
+    width: 260px;
+    height: 50px; 
+    
+    font-size: 20px;
+    border-radius: 30px;
+
+    border-color: #dddddb;
+    
+    background: none;
+    color: #dddddb;
+    text-align: center;
+    align-items: center;
+
+    transition: .2s linear;
+}
+
+.button_change_profile:hover {
+    background: #253752;
+}
+
+.button_change_profile:after {
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    margin-left: 30px;
+    padding-left: 20px;
+    border-left: 1px solid;
+}
+
+.button_change_profile span{
+    padding-left: 13px;
+    letter-spacing: 1.5px;
+}
+
+.button_change_profile img {
+    height: 45px; 
+    width: 45px;
+    top: 8px;
+    left: 8px;
+    bottom: 8px;
 }
