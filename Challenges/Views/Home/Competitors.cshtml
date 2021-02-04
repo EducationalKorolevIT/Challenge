@@ -51,7 +51,7 @@
             @foreach(Challenges.Models.Challenges_Table challenge in challenges.Where(e => e.Users == user))
             {
                 <div class="rivals_content">@challenge.Description</div>
-                <video src="/Files/GetChallengeVideoFile?videoId=@challenge.Id" controls width="720"></video>
+                <video src="/Files/GetChallengeVideoFile?videoId=@challenge.Id" preload="metadata" controls width="720"></video>
                 <div class="line_rivals"></div>
             }
         </div>

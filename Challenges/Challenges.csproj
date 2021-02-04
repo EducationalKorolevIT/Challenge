@@ -176,6 +176,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\APIController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -267,10 +268,10 @@
     <Content Include="Content\main.js" />
     <Content Include="Content\profile.css" />
     <Content Include="Content\rivals.css" />
+    <Content Include="Content\search.css" />
+    <Content Include="Content\settings_profile.css" />
     <Content Include="favicon.ico" />
     <Content Include="Files\Avatars\1005.jpg" />
-    <Content Include="Files\Challenges\1.mp4" />
-    <Content Include="Files\Challenges\2.mp4" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
@@ -322,10 +323,13 @@
     <Content Include="Views\Files\UploadChallengeResponsePage.cshtml" />
     <Content Include="Views\Files\CancelChallengePage.cshtml" />
     <Content Include="Views\Auth\ProfileSettings.cshtml" />
+    <Content Include="Views\Home\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\Challenges\" />
     <Folder Include="Files\Responses\" />
+    <Folder Include="Views\API\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

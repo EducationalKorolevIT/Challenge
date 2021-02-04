@@ -18,5 +18,11 @@ namespace Challenges.Controllers
         {
             return View();
         }
+
+        public ActionResult ErrorPage(string errorMessage)
+        {
+            ViewBag.errMsg = errorMessage;
+            return View();
+        }
     }
 }

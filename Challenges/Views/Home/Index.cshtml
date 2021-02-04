@@ -6,7 +6,7 @@
             <li style="display: flex;flex-direction: column;left: 10px;right: 10px;">
                 @{ var from = chs[i].Users; }
                 @{ var to = chs[i].Users1; }
-                <video style="border-radius: 10px; width: inherit; height: 720px; margin-left: -12px;" controls src="/Files/GetChallengeVideoFile?videoId=@chs[i].Id"></video>
+                <video src="/Files/Challenges/@(chs[i].Id).mp4" preload="metadata" style="border-radius: 10px; width: inherit; height: 720px; margin-left: -12px;" controls></video>
                 <div class="challenge_data">
                     <input type="hidden" class="ch_data_name_from" value="@(from.Nickname??from.Login)" />
                     <input type="hidden" class="ch_data_name_to" value="@(to.Nickname??to.Login)" />

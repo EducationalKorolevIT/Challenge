@@ -1,35 +1,57 @@
-﻿<form class="form_settings_profile">
-    <div class="div_topics div_elems">
-        <h3 class="settings_profile_title">Настройки профиля / @("@")zvendra</h3>
+﻿@{
+    Challenges.Models.Users user = (Challenges.Models.Users)Session["User"] ?? new Challenges.Models.Users();
+    if (user.Nickname == null) { user.Nickname = user.Login; }
+    ViewBag.User = user;
+    ViewBag.IsAuthorized = Session["User"] != null;
+    ViewBag.IsAvatarExists = File.Exists(HttpContext.Current.Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
+    ViewBag.Reputation = user.Reputation;
+}
+
+<script>
+    function readFile(event) {
+        document.querySelector('.avatar_settings_profile').style.background = event.target.result;
+    }
+
+    function setImage(fileElem) {
+        var file = fileElem.files[0];
+        var reader = new FileReader();
+        reader.addEventListener('load', readFile);
+        reader.readAsDataURL(file);
+    }
+</script>
+
+<form class="form_settings_profile" action="/Files/UpdateProfile" method="post" enctype="multipart/form-data">
+    <div class="div_topics div_elements">
+        <h3 class="settings_profile_title">Настройки профиля / @user.Login</h3>
 
         <div class="form_avatar_profile">
             <div class="add_photo">
-                <div class="avatar_settings_profile" src="css/icon_content/avatar.JPG"></div>
+                <div class="avatar_settings_profile" src="/Files/GetAvatar"/>
                 <div class="avatar_add" src="css/icon_popup/add_photo.png"></div>
             </div>
-            <button type="submit" class="button_avatar"> <span>Выберите фото</span> </button>
+            <button type="button" class="button_avatar" onclick="$('#avatarUploadInput').trigger('click');"> <span>Выберите фото</span> </button>
+            <input type="file" style="display: none" name="avatarupload" id="avatarUploadInput" onchange="setImage(this);" />
         </div>
 
         <div class="form_change">
             <div class="form_name_profile">
                 <p class="nickname">Имя</p>
                 <div class="line">
-                    <input id="login" class="enter_profile_title" type="text" placeholder="Зверева Александра" size="15px;" class="input_box" />
+                    <input id="login" class="enter_profile_title" type="text" placeholder="@user.Login" size="15px;" class="input_box" readonly />
                 </div>
             </div>
 
             <div class="form_name_profile">
                 <p class="nickname">Ник</p>
                 <div class="line">
-                    <input id="login" class="enter_profile_title" type="text" placeholder="zvendra" size="15px;" class="input_box" />
+                    <input id="login" class="enter_profile_title" type="text" placeholder="@user.Nickname" size="15px;" class="input_box" name="nickname" />
                 </div>
             </div>
         </div>
-        <div class="form_name_profile">
+
+        <div class="form_confirm_changes">
             <button class="confirm_changes">Подтвердить</br>изменения</button>
             <button class="cancel_changes">Отменить</button>
         </div>
-
-
     </div>
 </form>

@@ -1,19 +1,25 @@
+.div_elements {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .form_change {
         position: relative;
         width: auto;
         height: auto;
         margin: auto;
+        right: 120px;
+        bottom: 55px;
 
-        border: 2px solid #ff0000;
+        /*border: 2px solid #ff0000;*/
         border-radius: 30px;
-    
-        display: inline-block;
 }
-    
+/*   
 .form_change:hover {
         border: 2px solid #37b9ff;
 }
-
+*/
 .form_settings_profile {
     position: relative;
     width: 90%;
@@ -48,7 +54,9 @@
     width: auto;
     height: auto;
     padding: 10px 0;
-    margin-top: 20px;
+    left: 200px;
+
+    margin: 20px;
     border: 2px solid #2d4262;
     border-radius: 30px;
 
@@ -73,7 +81,7 @@
     z-index: 2;
 }
 
-.add_photo{
+.add_photo {
     position: relative;
 }
 
@@ -84,7 +92,7 @@
     border: 3px solid #37b9ff;
     filter: brightness(50%);
     cursor: pointer;
-    background: url(css/icon_content/avatar.JPG);
+    background: url(/Files/GetAvatar);
     background-size: auto 100%;
 }
 
@@ -137,6 +145,8 @@
 .nickname {
     font-size: 20px;
     font-weight: 100;
+    padding: 5px;
+    align-items: center;
 }
 
 .description_info {
@@ -253,12 +263,27 @@
 
 }
 
-.div_elems{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+
+.form_confirm_changes {
+    position: relative;
+    width: auto;
+    height: auto;
+
+    margin: auto;
+    border: 2px solid #0066ff;
+    border-radius: 30px;
+
+    display: inline-block;
+    justify-content: space-between;
+    font-size: 29px;
+    line-height: 1.5;
+    color: #dddddb;
+    z-index: 999;
 }
 
+.form_confirm_changes:hover {
+    border: 2px solid #37b9ff;
+}
 
 
 

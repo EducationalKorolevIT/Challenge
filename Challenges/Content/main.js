@@ -91,3 +91,21 @@ function closeOpenTopics() {
 
 
 /* END TOPICS */
+
+jQuery(document).ready(function(){
+    $('.rivals_content:odd').css({'color':'#37b9ff'});
+    $('.word_challenge:odd').css({'color':'#37b9ff'});
+
+});
+
+jQuery('.sort_rivals_example').mouseenter(function(){
+    $('.sort_rivals_example').css({'border-bottom':'1px solid #37b9ff'});
+});
+
+jQuery('.sort_rivals_example').mouseout(function(){
+    $('.sort_rivals_example').css({'border-bottom':'none'});
+});
+
+jQuery('.word_challenge').ready(function(){
+    $('.word_challenge:odd').css({'color':'#37b9ff'});
+});

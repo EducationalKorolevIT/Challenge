@@ -1,0 +1,24 @@
+.more_challenge {
+    cursor: pointer;
+
+    display: block;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+    color: #dddddb;
+
+    line-height: 40px;
+    border-width: 0;
+    border-radius: 20px;
+}
+
+.word_challenge {
+    position: relative;
+    cursor: pointer;
+    left: 20px;
+    text-align: left;
+    font-size: 29px;
+    line-height: 1.5;
+    color: #dddddb;
+}

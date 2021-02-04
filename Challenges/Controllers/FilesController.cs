@@ -26,15 +26,15 @@ namespace Challenges.Controllers
         {
             Users user = (Users)Session["User"];
             if (SharedObjects.CheckNonAuthorized(user)) return new HttpUnauthorizedResult();
+            user.Nickname = nickname;
             if (user != null)
             {
-                user.Nickname = nickname;
                 if(avatarupload!=null)
                     avatarupload.SaveAs(Server.MapPath("~/Files/Avatars/" + user.Id + ".jpg"));
                 SharedObjects.database.SaveChanges();
             }
             
-            return new RedirectResult("/Auth/Profile");
+            return new RedirectResult("/Auth/ProfileSettings");
         }
 
         async public Task<ActionResult> GetCssFile(string fileString)
@@ -119,8 +119,7 @@ namespace Challenges.Controllers
                     }
                 }
             }
-
-            return Redirect("/Files/UploadChallengePage");
+            return Redirect("/Home/ErrorPage?errorMessage=Что-то пошло не так...");
         }
 
         [HttpPost]

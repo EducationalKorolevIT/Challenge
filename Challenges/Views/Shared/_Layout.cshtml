@@ -25,9 +25,9 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/main.css">
-    <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
 
     <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/rivals.css">
+    <link rel="stylesheet" type="text/css" href="/Files/GetCssFile?fileString=Content/settings_profile.css">
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&f..">
 
@@ -36,6 +36,7 @@
     <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.bxslider.min.js"></script>
     <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.easing.1.3.js"></script>
     <script src="/Files/GetJsFile?fileString=Content/bxslider/jquery.fitvids.js"></script>
+    <script src="/Files/GetJsFile?fileString=Content/main.js"></script>
 
     <title>
         Главная/Challenge
@@ -46,16 +47,16 @@
 <body>
     <div class="menu">
 
-        <a href="main.html"><img class="logo" src="/Files/GetJpgFile?fileString=Content/css/logo.png"></a>
+        <a href="/"><img class="logo" src="/Files/GetJpgFile?fileString=Content/css/logo.png"></a>
 
         <nav class="nav">
-            <a class="nav_link" href="main.html">
+            <a class="nav_link" href="/">
                 <img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main2.png">
                 <img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/main2.png">
                 <div style="color: #37b9ff;">Главная</div>
             </a>
 
-            <a class="nav_link" href="rivals.html">
+            <a class="nav_link" href="/Home/Competitors">
                 <img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals2.png">
                 <img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/rivals3.png">
                 <div>Соперники</div>
@@ -74,14 +75,14 @@
             {
                 if (ViewBag.IsAvatarExists)
                 {
-                    <a class="nav_link" href="/Auth/Profile"><img class="hover_img" src="/Files/GetAvatar"><img class="hide_img" src="/Files/GetAvatar"><div>@(user.Login)</div></a>
+                    <a class="nav_link" href="/Auth/Profile"><img class="hover_img" src="/Files/GetAvatar" style="border-radius: 32px;"><img class="hide_img" src="/Files/GetAvatar" style="border-radius: 32px;"><div>@(user.Login)</div></a>
                 }
                 else
                 {
                     <a class="nav_link" href="/Auth/Profile"><img class="hover_img" src="~/Content/css/icon_menu/profile2.png"><img class="hide_img" src="~/Content/css/icon_menu/profile.png"><div>@(user.Login)</div></a>
                 }
             }
-            <a class="nav_link" href="#"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/customization2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/customization.png"><div>Настройки</div></a>
+            <a class="nav_link" href="/Auth/ProfileSettings"><img class="hover_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/customization2.png"><img class="hide_img" src="/Files/GetJpgFile?fileString=Content/css/icon_menu/customization.png"><div>Настройки</div></a>
         </nav>
 
         <a href="#download" class="button-download">
@@ -111,13 +112,6 @@
             по вопросам не пишите<br />
         </p>
         <img class="qr" src="css/icon_content/QR_beckend.jpg"> <br>
-    </div>
-
-    <div class="icon">
-        <img class="icon_hover" src="css/icon_content/like.png"> <br>
-        <img class="icon_hover" src="css/icon_content/comments.png"> <br>
-        <img class="icon_hover" id="sound" onclick="sound_off()" src="css/icon_content/sound.png"> <br>
-        <img class="icon_hover" src="css/icon_content/more.png"> <br>
     </div>
     <!--end of advertising-->
 
@@ -167,23 +161,23 @@
                     <p>прямо сейчас!</p>
                 </div>
 
-                <form action="" class="form_login">
+                <form action="/Auth/Authorize" class="form_login">
 
                     <div class="line">
                         <label for="login">Логин</label>
-                        <input id="login" class="enter" type="text" class="input_box" />
+                        <input id="login" class="enter" type="text" class="input_box" name="login" />
                     </div>
 
                     <div class="line">
                         <label for="password">Пароль</label>
-                        <input id="password" class="enter" type="password" class="input_box" />
+                        <input id="password" class="enter" type="password" class="input_box" name="password" />
                     </div>
 
                     <input type="checkbox" id="custom-checkbox">
                     <label for="custom-checkbox">Запомнить меня</label>
 
                     <div class="line">
-                        <button type="button" onclick="location='profile.html'" class="button_enter"> <span>Войти</span></button>
+                        <button type="submit" class="button_enter"> <span>Войти</span></button>
                         <button type="button" class="button_enter"> <span>Зарегистрироваться</span></button>
                     </div>
 
@@ -202,8 +196,27 @@
                     <p>Перетащите файлы в эту область</p>
                     <p class="or_registration">или</p>
                 </div>
-                <button type="button" class="button_registration"> <span>Выберите при помощи проводника</span></button>
 
+                <button type="button" class="button_registration" id="uploadChallengeExplorerSelectBtn" onclick="loadFile()"> <span>Выберите при помощи проводника</span></button>
+
+                <script>
+                    function loadFile() {
+                        $(document.querySelector('#uploadChallengeVideoInput')).trigger('click');
+                    }
+                    function fileChanged(elem) {
+                        if (elem.files.length > 0) {
+                            document.querySelector('#uploadChallengeForm').style.display = 'block';
+                            document.querySelector('#uploadChallengeExplorerSelectBtn span').innerHTML = elem.files[0].name;
+                        }
+                    }
+                </script>
+
+                <form enctype="multipart/form-data" action="/Files/UploadChallenge" method="post" id="uploadChallengeForm" style="display: none">
+                    <input type="file" id="uploadChallengeVideoInput" style="display: none" name="videoFile" onchange="fileChanged(this)" />
+                    <input type="text" id="uploadChallengeLoginToInput" name="userNameTo" />
+                    <input type="text" id="uploadChallengeDescriptionInput" name="challengeDescription" />
+                    <button type="submit">Залить на сервер</button>
+                </form>
             </div>
         </div>
     </div>

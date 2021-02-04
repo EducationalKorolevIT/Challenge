@@ -38,7 +38,7 @@
 }
 .sort_rivals_example:hover {
     color: #37b9ff; 
-    border-bottom: 1px solid #37b9ff;
+    /*border-bottom: 1px solid #37b9ff;*/
 }
 
 .rivals{
@@ -50,6 +50,7 @@
 }
 
 .rivals_content {
+    position: relative;
     font-size: 30px;
     font-weight: 700;
     text-align: left;
@@ -58,6 +59,7 @@
 
     width: 93%;
     margin: 10px;
+    left: 20px;
 
     color: #dddddb;
 }

@@ -22,6 +22,7 @@ namespace Challenges.Controllers
 
         public ActionResult ProfileSettings()
         {
+            if (Session["User"] == null) return Redirect("/Home/ErrorPage?errorMessage=Вы не авторизованы.");
             return View();
         }
 
@@ -32,7 +33,7 @@ namespace Challenges.Controllers
             Users found = SharedObjects.database.Users.FirstOrDefault(e => e.Login == login);
             if (found != null)
             {
-                return Content("ОШИБКА");
+                return Redirect("/Home/ErrorPage?errorMessage=Логин уже занят.");
             }
             else
             {
@@ -50,7 +51,7 @@ namespace Challenges.Controllers
                 SharedObjects.SetCookieUserData((Users)Session["User"]);
                 return new RedirectResult("/Home/Index");
             }
-            return Content("ОШИБКА");
+            return Redirect("/Home/ErrorPage?errorMessage=хз ¯\\_(ツ)_/¯");
         }
 
         public ActionResult LoadFromCookie()
@@ -60,7 +61,7 @@ namespace Challenges.Controllers
                 Session["User"] = SharedObjects.GetCookieUserData();
                 return new RedirectResult("/Home/Index");
             }
-            return Content("ОШИБКА");
+            return Redirect("/Home/ErrorPage?errorMessage=хз ¯\\_(ツ)_/¯");
         }
 
 
@@ -76,7 +77,7 @@ namespace Challenges.Controllers
             }
             else
             {
-                return Content("ОШИБКА");
+                return Redirect("/Home/ErrorPage?errorMessage=Неверный логин или пароль.");
             }
         }
 
@@ -85,11 +86,6 @@ namespace Challenges.Controllers
             Response.Cookies["UserData"].Value = null;
             Session["User"] = null;
             return new RedirectResult("/");
-        }
-
-        public ActionResult Main()
-        {
-            return View();
         }
     }
 }

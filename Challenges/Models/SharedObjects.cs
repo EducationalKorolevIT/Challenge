@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
+using System.Web.Mvc;
 using System.Web.Script.Serialization;
 
 namespace Challenges.Models
@@ -67,6 +70,28 @@ namespace Challenges.Models
                     return 0;
                 }
             }
+        }
+    }
+
+    public class VideoDataResult : ActionResult
+    {
+        string path;
+
+        public VideoDataResult(string filePath)
+        {
+            path = filePath;
+        }
+
+        public override void ExecuteResult(ControllerContext context)
+        {
+            context.HttpContext.Response.AddHeader("Content-Disposition", "attachment; filename=" + path);
+
+            var objFile = new FileInfo(path);
+
+            var stream = objFile.OpenRead();
+            var objBytes = new byte[stream.Length];
+            stream.Read(objBytes, 0, (int)objFile.Length);
+            context.HttpContext.Response.BinaryWrite(objBytes);
         }
     }
 }
